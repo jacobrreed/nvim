@@ -1,14 +1,10 @@
 return {
   "akinsho/bufferline.nvim",
   version = "*",
+  lazy = false,
   dependencies = "nvim-tree/nvim-web-devicons",
-  event = {
-    "BufReadPre",
-    "BufNewFile",
-  },
   opts = {
     options = {
-      separator_style = "thin",
       diagnostics = "nvim_lsp",
       offsets = {
         {
@@ -20,7 +16,11 @@ return {
       },
     },
   },
-  config = function(_, opts)
-    require("bufferline").setup(opts)
-  end,
+  keys = {
+    { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
+    { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },
+    { "<leader>bo", "<Cmd>BufferLineCloseOthers<CR>", desc = "Delete other buffers" },
+    { "<leader>br", "<Cmd>BufferLineCloseRight<CR>", desc = "Delete buffers to the right" },
+    { "<leader>bl", "<Cmd>BufferLineCloseLeft<CR>", desc = "Delete buffers to the left" },
+  },
 }
