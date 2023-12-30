@@ -36,7 +36,7 @@ return {
           mode = "symbol",
           max_width = 100,
           symbol_map = {
-            Copilot = "",
+            Copilot = require("util").ui.icons.kinds.Copilot,
           },
         }),
       },

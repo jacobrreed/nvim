@@ -113,4 +113,11 @@ return {
     event = { "BufReadPost", "BufNewFile", "BufWritePre" },
     opts = {},
   },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    lazy = true,
+    opts = {
+      enable_autocmd = false,
+    },
+  },
 }

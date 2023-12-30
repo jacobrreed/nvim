@@ -2,8 +2,12 @@ return {
   {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
-    event = "InsertEnter",
     build = ":Copilot auth",
+    event = {
+      "BufEnter",
+      "BufReadPre",
+      "InsertEnter",
+    },
     opts = {
       suggestion = { enabled = false },
       panel = { enabled = false },
@@ -21,4 +25,5 @@ return {
       require("copilot_cmp").setup()
     end,
   },
+  "AndreM222/copilot-lualine",
 }

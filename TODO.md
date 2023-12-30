@@ -1,8 +1,3 @@
-- lualine customization
-  - Copilot status
-- whichkey UI keys
-  - Toggle autoformat/format on save
-  - Toggle word wrap
 - LSP which keys not showing?
 - Code action whichkey?
 - look at extras category on lazyvim and add stuff from there i want

@@ -1,6 +1,6 @@
 return {
   "stevearc/dressing.nvim",
-  event = "VeryLazy",
+  lazy = true,
   init = function()
     ---@diagnostic disable-next-line: duplicate-set-field
     vim.ui.select = function(...)
