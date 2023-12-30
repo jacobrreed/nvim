@@ -73,9 +73,6 @@ map({ "i", "n" }, "<C-x>", "<cmd>bd<cr>", { desc = "Close current buffer" })
 map("v", "<", "<gv")
 map("v", ">", ">gv")
 
--- Lazy
-map("n", "<leader>L", "<cmd>Lazy<cr>", { desc = "Lazy" })
-
 -- windows
 map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })

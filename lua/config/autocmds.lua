@@ -93,6 +93,5 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
   group = augroup("auto_unfold"),
-  pattern = "!NeoTree",
-  command = "%foldopen!",
+  command = "zR",
 })
