@@ -20,7 +20,6 @@ return {
           sorting_strategy = "ascending",
           winblend = 0,
           color_devicons = true,
-          file_previewer = require("telescope.previewers").vim_buffer_cat.new,
           path_display = function(_, path)
             local tail = require("telescope.utils").path_tail(path)
             return string.format("%s (%s)", tail, path)
