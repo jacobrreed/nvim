@@ -64,11 +64,12 @@ map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
 -- save file
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w!<cr><esc>", { desc = "Save file" })
 
 -- Save all buffers and close
 map({ "i", "n" }, "<C-q>", "<cmd>SessionsSave<cr><cmd>silent! xa<cr>", { desc = "Save all and quit" })
 map({ "i", "n" }, "<C-x>", "<cmd>bd<cr>", { desc = "Close current buffer" })
+
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")

@@ -63,7 +63,7 @@ if vim.fn.has("nvim-0.10") == 1 then
 end
 
 -- Folding
-opt.foldlevel = 99
+opt.foldlevel = 999
 opt.foldmethod = "expr"
 opt.foldexpr = "nvim_treesitter#foldexpr()"
 

@@ -1,3 +1,3 @@
 ### Neovim config
 
-- this takes a lot of what is in LazyVim but simplifies it for my uses
+- Inspired mostly by my LazyVim config, but removed the dependency on LazyVim and all the plugins I wasn't using and options/configurations I didn't like or use either. Then added some other plugins of my own.
