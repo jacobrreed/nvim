@@ -15,10 +15,16 @@ return {
 
       telescope.setup({
         defaults = {
-          layout_strategy = "vertical",
+          layout_strategy = "horizontal",
           layout_config = { prompt_position = "top", width = 0.9, height = 0.9 },
           sorting_strategy = "ascending",
           winblend = 0,
+          color_devicons = true,
+          file_previewer = require("telescope.previewers").vim_buffer_cat.new,
+          path_display = function(_, path)
+            local tail = require("telescope.utils").path_tail(path)
+            return string.format("%s (%s)", tail, path)
+          end,
           mappings = {
             i = {
               ["<C-k>"] = actions.move_selection_previous,
@@ -31,8 +37,8 @@ return {
       telescope.load_extension("fzf")
     end,
     keys = {
-      { "<leader>tf", "<cmd>Telescope find_files theme=dropdown<cr>", desc = "Find files" },
-      { "<leader><leader>", "<cmd>Telescope find_files theme=dropdown<cr>", desc = "Find files" },
+      { "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
+      { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { "<leader>tb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
       { "<leader>t/", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
       { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
