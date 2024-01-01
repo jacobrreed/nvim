@@ -10,22 +10,27 @@ return {
         -- FormatToggle! will disable formatting just for this buffer
         if vim.b.disable_autoformat then
           vim.b.disable_autoformat = false
+          require("notify")("Formatting disabled")
         else
           vim.b.disable_autoformat = true
+          require("notify")("Formatting enabled")
         end
       else
         if vim.g.disable_autoformat then
           vim.g.disable_autoformat = false
+          require("notify")("Formatting disabled")
         else
           vim.g.disable_autoformat = true
+          require("notify")("Formatting enabled")
         end
       end
     end, {
-      desc = "Toggle autoformat-on-save",
+      desc = "Toggle autoformat",
       bang = true,
     })
 
     conform.setup({
+      quiet = true,
       formatters_by_ft = {
         javascript = { "prettier" },
         typescript = { "prettier" },
