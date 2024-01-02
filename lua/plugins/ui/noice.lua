@@ -47,9 +47,7 @@ return {
     },
     {
       "<leader>unh",
-      function()
-        require("noice").cmd("history")
-      end,
+      "<cmd>Noice telescope<cr>",
       desc = "Noice History",
     },
     {
