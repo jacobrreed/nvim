@@ -21,7 +21,7 @@ return {
       icons_enabled = true,
       globalstatus = true,
       disabled_filetypes = { statusline = { "dashboard" } },
-      extensions = { "neo-tree", "lazy", "aerial" },
+      extensions = { "neo-tree", "lazy" },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
@@ -37,7 +37,6 @@ return {
           },
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
           { "filename", path = 1 },
-          { "aerial" },
         },
         lualine_x = {
           { "copilot", show_loading = true, show_colors = true, padding = { right = 2 } },
