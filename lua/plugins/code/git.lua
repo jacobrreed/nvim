@@ -13,6 +13,7 @@ return {
         untracked = { text = "▎" },
       },
       current_line_blame = true,
+      current_line_blame_formatter = "<author>, <author_time:%Y-%m-%d> - <summary>",
       on_attach = function(buffer)
         local gs = package.loaded.gitsigns
         local function map(mode, l, r, desc)
