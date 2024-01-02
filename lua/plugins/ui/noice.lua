@@ -39,28 +39,28 @@ return {
       desc = "Redirect Cmdline",
     },
     {
-      "<leader>snl",
+      "<leader>unl",
       function()
         require("noice").cmd("last")
       end,
       desc = "Noice Last Message",
     },
     {
-      "<leader>snh",
+      "<leader>unh",
       function()
         require("noice").cmd("history")
       end,
       desc = "Noice History",
     },
     {
-      "<leader>sna",
+      "<leader>una",
       function()
         require("noice").cmd("all")
       end,
       desc = "Noice All",
     },
     {
-      "<leader>snd",
+      "<leader>und",
       function()
         require("noice").cmd("dismiss")
       end,

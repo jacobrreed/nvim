@@ -40,6 +40,9 @@ return {
           u = {
             name = "UI",
             w = wrap_toggle(),
+            n = {
+              name = "Noice",
+            },
           },
           W = {
             name = "Workspaces",
