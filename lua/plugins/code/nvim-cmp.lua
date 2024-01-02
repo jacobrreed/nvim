@@ -16,6 +16,7 @@ return {
           completeopt = "menu,menuone,preview,noselect",
         },
         mapping = cmp.mapping.preset.insert({
+          ["<C-Space>"] = cmp.mapping.complete(),
           ["<CR>"] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = true,
