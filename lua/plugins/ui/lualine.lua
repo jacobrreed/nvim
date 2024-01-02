@@ -16,10 +16,12 @@ return {
     local fg = require("util").ui.fg
     local opts = {
       theme = "dracula-nvim",
+      component_separators = { left = "", right = "" },
+      section_separators = { left = "", right = "" },
       icons_enabled = true,
       globalstatus = true,
       disabled_filetypes = { statusline = { "dashboard" } },
-      extensions = { "neo-tree", "lazy" },
+      extensions = { "neo-tree", "lazy", "aerial" },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
@@ -34,8 +36,11 @@ return {
             },
           },
           { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
+          { "filename", path = 1 },
+          { "aerial" },
         },
         lualine_x = {
+          { "copilot", show_loading = true, show_colors = true, padding = { right = 2 } },
           {
             function()
               return require("noice").api.status.command.get()
@@ -54,7 +59,6 @@ return {
             end,
             color = fg("Constant"),
           },
-          { "copilot", show_loading = true, show_colors = true },
           {
             function()
               return "  " .. require("dap").status()
@@ -63,11 +67,6 @@ return {
               return package.loaded["dap"] and require("dap").status() ~= ""
             end,
             color = fg("Debug"),
-          },
-          {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
-            color = fg("Special"),
           },
           {
             "diff",
@@ -93,9 +92,11 @@ return {
           { "location", padding = { left = 0, right = 1 } },
         },
         lualine_z = {
-          function()
-            return " " .. os.date("%R")
-          end,
+          {
+            require("lazy.status").updates,
+            cond = require("lazy.status").has_updates,
+            color = fg("Special"),
+          },
         },
       },
     }
