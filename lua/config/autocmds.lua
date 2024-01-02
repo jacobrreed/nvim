@@ -91,7 +91,7 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" }, {
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   group = augroup("auto_unfold"),
-  command = "%foldopen!",
+  command = "normal zx",
 })
