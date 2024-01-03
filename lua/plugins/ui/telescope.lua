@@ -56,6 +56,7 @@ return {
       })
       telescope.load_extension("fzf")
       telescope.load_extension("live_grep_args")
+      telescope.load_extension("bookmarks")
     end,
     keys = {
       { "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Find files" },

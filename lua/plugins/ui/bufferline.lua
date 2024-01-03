@@ -2,7 +2,7 @@ return {
   "akinsho/bufferline.nvim",
   version = "*",
   lazy = false,
-  dependencies = "nvim-tree/nvim-web-devicons",
+  dependencies = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" },
   opts = {
     options = {
       diagnostics = "nvim_lsp",
@@ -26,6 +26,6 @@ return {
     { "<S-l>", "<cmd>BufferLineCycleNext<cr>", desc = "Next buffer" },
     { "[b", "<cmd>bprevious<cr>", desc = "Prev buffer" },
     { "]b", "<cmd>bnext<cr>", desc = "Next buffer" },
-    { "<leader>bd", "<cmd>bd<cr>", desc = "Delete current buffer" },
+    { "<leader>bd", "<cmd>Bdelete<cr>", desc = "Delete current buffer" },
   },
 }
