@@ -47,16 +47,22 @@ return {
               ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
             },
           },
+          extensions = {
+            live_grep_args = {
+              auto_quoting = true,
+            },
+          },
         },
       })
       telescope.load_extension("fzf")
+      telescope.load_extension("live_grep_args")
     end,
     keys = {
       { "<leader>tf", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { "<leader><leader>", "<cmd>Telescope find_files<cr>", desc = "Find files" },
       { "<leader>tb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
-      { "<leader>t/", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
-      { "<leader>/", "<cmd>Telescope live_grep<cr>", desc = "Live grep" },
+      { "<leader>t/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep" },
+      { "<leader>/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep" },
       { "<leader>tg", "<cmd>Telescope git_files<cr>", desc = "Git file list" },
       { "<leader>:", "<cmd>Telescope command_history<cr>", desc = "Command history" },
       { "<leader>t:", "<cmd>Telescope command_history<cr>", desc = "Command history" },
