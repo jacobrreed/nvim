@@ -29,7 +29,7 @@ return {
       keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 
       opts.desc = "Show LSP definitions"
-      keymap.set("n", "ld", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+      keymap.set("n", "<leader>Ld", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
       opts.desc = "Show LSP implementations"
       keymap.set("n", "<leader>LI", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
@@ -60,6 +60,9 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>Lr", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      opts.desc = "LSP Info"
+      keymap.set("n", "<leader>Li", "<cmd>LspInfo<cr>", opts)
     end
 
     local capabilities = cmp_nvim_lsp.default_capabilities()
@@ -127,7 +130,5 @@ return {
       end,
     })
   end,
-  keys = {
-    { "<leader>Li", "<cmd>LspInfo<cr>", desc = "LSP Info" },
-  },
+  keys = {},
 }
