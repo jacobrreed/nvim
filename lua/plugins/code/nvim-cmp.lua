@@ -12,6 +12,9 @@ return {
       end
 
       local opts = {
+        experimental = {
+          ghost_text = true,
+        },
         completion = {
           completeopt = "menu,menuone,preview,noselect",
         },
