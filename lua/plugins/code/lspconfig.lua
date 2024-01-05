@@ -12,10 +12,16 @@ return {
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
     local keymap = vim.keymap
+    local wk = require("which-key")
 
     local opts = { noremap = true, silent = true }
     local on_attach = function(_, bufnr)
       opts.buffer = bufnr
+
+      wk.register({
+        ["L"] = { name = "LSP" },
+      }, { mode = "n" }, { prefix = "<leader>" })
+
       -- set keybinds
       opts.desc = "Show LSP references"
       keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references

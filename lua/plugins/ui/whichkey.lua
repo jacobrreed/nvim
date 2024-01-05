@@ -16,7 +16,6 @@ return {
           ["<tab>"] = { name = "+tabs" },
           b = { name = "Buffer" },
           l = { "<cmd>Lazy<cr>", "Lazy" },
-          L = { name = "LSP" },
           c = {
             name = "Code",
             c = {
@@ -35,6 +34,7 @@ return {
             s = { "<cmd>SessionsSave<cr>", "Save Session" },
             l = { "<cmd>SessionsLoad<cr>", "Load Session" },
           },
+          r = { name = "Rename" },
           h = { name = "Hawtkeys" },
           s = { name = "Search" },
           u = {

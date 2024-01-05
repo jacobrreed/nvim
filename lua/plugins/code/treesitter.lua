@@ -121,4 +121,7 @@ return {
       enable_autocmd = false,
     },
   },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+  },
 }
