@@ -1,145 +1,188 @@
 return {
-  "neovim/nvim-lspconfig",
-  event = {
-    "BufReadPre",
-    "BufNewFile",
-  },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    { "antosha417/nvim-lsp-file-operations", config = true },
-  },
-  config = function()
-    local lspconfig = require("lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
-    local keymap = vim.keymap
-    local wk = require("which-key")
+  {
+    "neovim/nvim-lspconfig",
+    event = {
+      "BufReadPre",
+      "BufNewFile",
+    },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      { "antosha417/nvim-lsp-file-operations", config = true },
+    },
+    config = function()
+      local lspconfig = require("lspconfig")
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
+      local keymap = vim.keymap
+      local wk = require("which-key")
 
-    local opts = { noremap = true, silent = true }
-    local on_attach = function(_, bufnr)
-      opts.buffer = bufnr
+      local opts = { noremap = true, silent = true }
+      local on_attach = function(_, bufnr)
+        opts.buffer = bufnr
 
-      wk.register({
-        ["L"] = { name = "LSP" },
-      }, { mode = "n" }, { prefix = "<leader>" })
+        wk.register({
+          ["L"] = { name = "LSP" },
+        }, { mode = "n" }, { prefix = "<leader>" })
 
-      -- set keybinds
-      opts.desc = "Show LSP references"
-      keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+        -- set keybinds
+        opts.desc = "Show LSP references"
+        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
 
-      opts.desc = "Go to definition"
-      keymap.set("n", "gd", function()
-        require("telescope.builtin").lsp_definitions({ reuse_wind = true })
-      end, opts) -- go to declaration
+        -- opts.desc = "Go to definition"
+        -- keymap.set("n", "gd", function()
+        --   require("telescope.builtin").lsp_definitions({ reuse_wind = true })
+        -- end, opts) -- go to declaration
 
-      opts.desc = "Go to declaration"
-      keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
+        opts.desc = "Show LSP definitions"
+        keymap.set("n", "<leader>Ld", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
 
-      opts.desc = "Show LSP definitions"
-      keymap.set("n", "<leader>Ld", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+        opts.desc = "Show LSP implementations"
+        keymap.set("n", "<leader>LI", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
 
-      opts.desc = "Show LSP implementations"
-      keymap.set("n", "<leader>LI", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+        opts.desc = "Show LSP type definitions"
+        keymap.set("n", "<leader>Lt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
-      opts.desc = "Show LSP type definitions"
-      keymap.set("n", "<leader>Lt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+        -- opts.desc = "Code actions"
+        -- keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
 
-      opts.desc = "Code actions"
-      keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+        opts.desc = "Code actions (source)"
+        keymap.set({ "n", "v" }, "<leader>cA", function()
+          vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
+        end, opts) -- see available code actions, in visual mode will apply to selection
 
-      opts.desc = "Code actions (source)"
-      keymap.set({ "n", "v" }, "<leader>cA", function()
-        vim.lsp.buf.code_action({ context = { only = { "source" }, diagnostics = {} } })
-      end, opts) -- see available code actions, in visual mode will apply to selection
+        opts.desc = "Smart rename"
+        keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
-      opts.desc = "Smart rename"
-      keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
+        opts.desc = "Show buffer diagnostics"
+        keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
-      opts.desc = "Show buffer diagnostics"
-      keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+        opts.desc = "Show line diagnostics"
+        keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
 
-      opts.desc = "Show line diagnostics"
-      keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
+        opts.desc = "Go to previous diagnostic"
+        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 
-      opts.desc = "Go to previous diagnostic"
-      keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+        opts.desc = "Go to next diagnostic"
+        keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
 
-      opts.desc = "Go to next diagnostic"
-      keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+        -- opts.desc = "Show documentation for what is under cursor"
+        -- keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
-      opts.desc = "Show documentation for what is under cursor"
-      keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+        opts.desc = "Restart LSP"
+        keymap.set("n", "<leader>Lr", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 
-      opts.desc = "Restart LSP"
-      keymap.set("n", "<leader>Lr", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+        opts.desc = "LSP Info"
+        keymap.set("n", "<leader>Li", "<cmd>LspInfo<cr>", opts)
+      end
 
-      opts.desc = "LSP Info"
-      keymap.set("n", "<leader>Li", "<cmd>LspInfo<cr>", opts)
-    end
+      local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    local capabilities = cmp_nvim_lsp.default_capabilities()
+      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
+      for type, icon in pairs(signs) do
+        local hl = "DiagnosticSign" .. type
+        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+      end
 
-    local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+      -- configure html server
+      lspconfig["html"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
 
-    -- configure html server
-    lspconfig["html"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+      local function addMissingImports()
+        vim.lsp.buf.execute_command({
+          command = "_typescript.addMissingImports",
+          arguments = {
+            vim.api.nvim_buf_get_name(0),
+          },
+        })
+      end
+      -- configure typescript server with plugin
+      lspconfig["tsserver"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        commands = {
+          AddMissingImports = {
+            addMissingImports,
+            description = "Add missing imports",
+          },
+        },
+      })
 
-    -- configure typescript server with plugin
-    lspconfig["tsserver"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
+      -- configure css server
+      lspconfig["cssls"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
+      lspconfig["emmet_ls"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+        filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
+      })
 
-    -- configure css server
-    lspconfig["cssls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-    lspconfig["emmet_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
-    })
+      -- configure python server
+      lspconfig["pyright"].setup({
+        capabilities = capabilities,
+        on_attach = on_attach,
+      })
 
-    -- configure python server
-    lspconfig["pyright"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-    })
-
-    -- configure lua server (with special settings)
-    lspconfig["lua_ls"].setup({
-      on_init = function(client)
-        local path = client.workspace_folders[1].name
-        if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
-          client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
-            Lua = {
-              runtime = {
-                version = "LuaJIT",
-              },
-              workspace = {
-                checkThirdParty = false,
-                library = {
-                  vim.env.VIMRUNTIME,
+      -- configure lua server (with special settings)
+      lspconfig["lua_ls"].setup({
+        on_init = function(client)
+          local path = client.workspace_folders[1].name
+          if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+            client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+              Lua = {
+                runtime = {
+                  version = "LuaJIT",
+                },
+                workspace = {
+                  checkThirdParty = false,
+                  library = {
+                    vim.env.VIMRUNTIME,
+                  },
+                },
+                completion = {
+                  callSnippet = "Replace",
                 },
               },
-              completion = {
-                callSnippet = "Replace",
-              },
-            },
-          })
+            })
 
-          client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-        end
-        return true
-      end,
-    })
-  end,
-  keys = {},
+            client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+          end
+          return true
+        end,
+      })
+    end,
+    keys = {},
+  },
+  {
+    "nvimdev/lspsaga.nvim",
+    event = { "LspAttach" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function(opts)
+      local lspsaga = require("lspsaga")
+      lspsaga.setup(opts)
+    end,
+    keys = {
+      { "gd", "<cmd>Lspsaga peek_definition<cr>", desc = "Peek definition" },
+      { "gD", "<cmd>Lspsaga goto_definition<cr>", desc = "Go to definition" },
+      { "gt", "<cmd>Lspsaga peek_type_definition<cr>", desc = "Peek type definition" },
+      { "gT", "<cmd>Lspsaga goto_type_definition<cr>", desc = "Go to type definition" },
+      { "<leader>Lli", "<cmd>Lspsaga incoming_calls<cr>", desc = "Incoming calls" },
+      { "<leader>Llo", "<cmd>Lspsaga outgoing_calls<cr>", desc = "Outgoing calls" },
+      { "<leader>Lld", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Diagnostic jump next" },
+      { "<leader>Llf", "<cmd>Lspsaga finder<cr>", desc = "Finder" },
+      { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Code action" },
+      { "K", "<cmd>Lspsaga hover_doc<cr>", desc = "Hover doc" },
+      -- {
+      --   "<leader>cA",
+      --   function()
+      --     require("lspsaga.codeaction").code_action({ context = { only = "source" } })
+      --   end,
+      --   desc = "Code action (source)",
+      -- },
+    },
+  },
 }

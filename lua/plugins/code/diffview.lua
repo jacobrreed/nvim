@@ -1,7 +1,18 @@
 return {
   "sindrets/diffview.nvim",
   keys = {
-    { "<leader>go", "<cmd>DiffviewOpen<cr>", desc = "Open Diffview" },
-    { "<leader>gc", "<cmd>DiffviewClose<cr>", desc = "Close Diffview" },
+    {
+      "<leader>gd",
+      function()
+        local lib = require("diffview.lib")
+        local view = lib.get_current_view()
+        if view then
+          vim.cmd.DiffviewClose()
+        else
+          vim.cmd.DiffviewOpen()
+        end
+      end,
+      desc = "Diffview",
+    },
   },
 }

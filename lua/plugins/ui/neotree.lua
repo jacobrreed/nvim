@@ -18,9 +18,18 @@ return {
 
     require("neo-tree").setup({
       close_if_last_window = false,
+      buffers = {
+        follow_current_file = {
+          enabled = true,
+          leave_dirs_open = true,
+        },
+      },
       filesystem = {
         hide_dotfiles = false,
-        hide_gitignore = true,
+        hide_gitignored = true,
+        always_show = {
+          "*/logs/*",
+        },
         follow_current_file = {
           enabled = true,
           leave_dirs_open = true,

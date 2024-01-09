@@ -91,6 +91,21 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = augroup("auto_fix_imports_ts"),
+  desc = "Fix TS imports",
+  pattern = { "*.ts*" },
+  callback = function()
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = {
+        only = { "source.addMissingImports.ts", "soruce.removeUnusedImports.ts" },
+      },
+    })
+    vim.cmd("write")
+  end,
+})
+
 vim.api.nvim_create_user_command("MasonUpgrade", function()
   local registry = require("mason-registry")
   registry.refresh()

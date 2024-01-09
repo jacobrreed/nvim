@@ -16,6 +16,12 @@ return {
           ["<tab>"] = { name = "+tabs" },
           b = { name = "Buffer" },
           l = { "<cmd>Lazy<cr>", "Lazy" },
+          L = {
+            name = "LSP",
+            l = {
+              name = "Lspsaga",
+            },
+          },
           c = {
             name = "Code",
             c = {
