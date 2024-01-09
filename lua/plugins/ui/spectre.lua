@@ -3,7 +3,10 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
-  keys = {
+  opts = {
+    live_update = true,
+  },
+  key = {
     { "<leader>st", '<cmd>lua require("spectre").toggle()<CR>', desc = "Toggle Spectre", mode = "n" },
     {
       "<leader>sw",

@@ -91,11 +91,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-  group = augroup("auto_unfold"),
-  command = "normal zx",
-})
-
 vim.api.nvim_create_user_command("MasonUpgrade", function()
   local registry = require("mason-registry")
   registry.refresh()
