@@ -49,10 +49,10 @@ return {
           ["<C-e>"] = cmp.mapping.abort(),
         }),
         sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "copilot" },
-          { name = "path" },
-          { name = "buffer" },
+          { name = "nvim_lsp", priority = 100 },
+          { name = "copilot", priority = 90 },
+          { name = "buffer", priority = 80 },
+          { name = "path", priority = 70 },
         }),
         formatting = {
           format = require("lspkind").cmp_format({

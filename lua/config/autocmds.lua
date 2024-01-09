@@ -92,14 +92,29 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 })
 
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  group = augroup("auto_fix_imports_ts"),
-  desc = "Fix TS imports",
-  pattern = { "*.ts*" },
+  group = augroup("auto_add_missing_imports"),
+  desc = "Auto add missing imports",
+  pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
   callback = function()
     vim.lsp.buf.code_action({
       apply = true,
       context = {
-        only = { "source.addMissingImports.ts", "soruce.removeUnusedImports.ts" },
+        only = { "source.addMissingImports.ts" },
+      },
+    })
+    vim.cmd("write")
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+  group = augroup("auto_remove_unused_imports"),
+  desc = "Auto remove unused imports",
+  pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+  callback = function()
+    vim.lsp.buf.code_action({
+      apply = true,
+      context = {
+        only = { "source.removeUnused.ts" },
       },
     })
     vim.cmd("write")

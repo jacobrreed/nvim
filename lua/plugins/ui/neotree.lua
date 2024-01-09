@@ -28,7 +28,7 @@ return {
         hide_dotfiles = false,
         hide_gitignored = true,
         always_show = {
-          "*/logs/*",
+          "**/logs/**",
         },
         follow_current_file = {
           enabled = true,

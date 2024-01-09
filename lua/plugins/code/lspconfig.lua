@@ -161,6 +161,11 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
     },
+    opts = {
+      lightbulb = {
+        enable = false,
+      },
+    },
     config = function(opts)
       local lspsaga = require("lspsaga")
       lspsaga.setup(opts)
