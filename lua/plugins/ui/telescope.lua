@@ -116,6 +116,7 @@ return {
       { "<leader>t:", "<cmd>Telescope command_history<cr>", desc = "Command history" },
       { "<leader>?", "<cmd>Telescope search_history<cr>", desc = "Search history" },
       { "<leader>t?", "<cmd>Telescope search_history<cr>", desc = "Search history" },
+      { "<leader>tC", ":lua require('telescope.builtin').colorscheme()<cr>", desc = "Color schemes" },
       { "<leader>tq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix list" },
       { "<leader>tR", "<cmd>Telescope registers<cr>", desc = "Registers" },
       { "<leader>to", "<cmd>Telescope oldfiles<cr>", desc = "Recent files" },

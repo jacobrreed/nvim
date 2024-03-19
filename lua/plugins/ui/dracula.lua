@@ -27,6 +27,5 @@ return {
       lualine_bg_color = "#44475A",
       transparent_bg = true,
     })
-    vim.cmd([[colorscheme dracula]])
   end,
 }
