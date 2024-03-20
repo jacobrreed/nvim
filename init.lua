@@ -19,7 +19,7 @@ require("lazy").setup({
 }, {
   concurrency = jit.os:find("Windows") and (vim.loop.available_parallelism() * 2) or nil,
   install = {
-    colorscheme = { "dracula" },
+    colorscheme = { "koalight" },
     missing = true,
   },
   checker = {
