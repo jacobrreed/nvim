@@ -9,7 +9,7 @@ return {
     "3rd/image.nvim",
   },
   keys = {
-    { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "NeoTree toggle" },
+    { "<leader>f", "<cmd>Neotree toggle<cr>", desc = "NeoTree toggle" },
   },
   config = function()
     vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })

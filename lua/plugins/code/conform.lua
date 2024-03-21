@@ -67,7 +67,7 @@ return {
       })
     end, { desc = "Format file or range (in visual mode)" })
 
-    vim.keymap.set({ "n" }, "<leader>ft", "<cmd>FormatToggle<cr>", { desc = "Toggle autoformat" })
-    vim.keymap.set({ "n" }, "<leader>fT", "<cmd>FormatToggle!<cr>", { desc = "Toggle autoformat for buffer" })
+    vim.keymap.set({ "n" }, "<leader>cft", "<cmd>FormatToggle<cr>", { desc = "Toggle autoformat" })
+    vim.keymap.set({ "n" }, "<leader>cfT", "<cmd>FormatToggle!<cr>", { desc = "Toggle autoformat for buffer" })
   end,
 }

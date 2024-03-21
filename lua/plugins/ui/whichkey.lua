@@ -37,9 +37,9 @@ return {
               a = { "<cmd>Copilot panel accept<cr>", "Accept current highlighted panel suggestion" },
               s = { "<cmd>Copilot status<cr>", "Status" },
             },
+            f = { name = "Format" },
           },
           t = { name = "Telescope" },
-          f = { name = "Format" },
           g = { name = "Git" },
           Q = {
             name = "Quit/Session/Save",
