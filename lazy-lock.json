@@ -20,6 +20,7 @@
   "dressing.nvim": { "branch": "master", "commit": "18e5beb3845f085b6a33c24112b37988f3f93c06" },
   "eldritch-nvim": { "branch": "master", "commit": "8931340ccad6b8230af74afbfe717f46ec7beaa5" },
   "flash.nvim": { "branch": "main", "commit": "48817af25f51c0590653bbc290866e4890fe1cbe" },
+  "floatnote.nvim": { "branch": "master", "commit": "f331c604bf2b64871e85a1607e6834639e7d859c" },
   "friendly-snippets": { "branch": "main", "commit": "dcd4a586439a1c81357d5b9d26319ae218cc9479" },
   "gitsigns.nvim": { "branch": "main", "commit": "078041e9d060a386b0c9d3a8c7a7b019a35d3fb0" },
   "go.nvim": { "branch": "master", "commit": "a3ce5016f50b0b9e96713f3f859089983c57a0db" },
