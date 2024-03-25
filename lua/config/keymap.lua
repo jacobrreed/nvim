@@ -134,6 +134,22 @@ local open_todo_float = function()
     vim.api.nvim_win_close(win, true)
     vim.api.nvim_buf_delete(buf, { force = true })
   end, { buffer = buf })
+  vim.keymap.set("n", "<leader>ot", function()
+    vim.cmd("w")
+    vim.api.nvim_win_close(win, true)
+    vim.api.nvim_buf_delete(buf, { force = true })
+  end, { buffer = buf })
+  vim.keymap.set("n", "<C-q>", function()
+    vim.cmd("w")
+    vim.api.nvim_win_close(win, true)
+    vim.api.nvim_buf_delete(buf, { force = true })
+  end, { buffer = buf })
+end
+local write_todo_note = function()
+  local input = vim.fn.input("Add TODO: ")
+  local append = " - " .. input
+  vim.cmd("!echo '" .. append .. "' >> ~/dev/notes/TODO.md", { silent = true })
 end
 
-vim.keymap.set("n", "<leader>o", open_todo_float, {})
+vim.keymap.set("n", "<leader>ot", open_todo_float, { desc = "Toggle TODO list" })
+vim.keymap.set("n", "<leader>oa", write_todo_note, { desc = "Add to TODO list" })
