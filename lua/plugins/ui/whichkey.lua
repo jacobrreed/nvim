@@ -26,6 +26,9 @@ return {
               name = "Lspsaga",
             },
           },
+          o = {
+            name = "TODO",
+          },
           c = {
             name = "Code",
             n = {
