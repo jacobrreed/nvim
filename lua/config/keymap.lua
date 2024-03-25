@@ -104,4 +104,3 @@ vim.keymap.set("v", "<C-r>", function()
 end)
 
 map({ "n" }, "<Backspace>", "^", { desc = "Move to first non-blank character" })
-
