@@ -57,6 +57,8 @@ map("i", ";", ";<c-g>u")
 
 -- save file
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w!<cr><esc>", { desc = "Save file" })
+-- SAVE ALL
+map({ "i", "x", "n", "s" }, "<CS-s>", "<cmd>wa<cr><esc>", { desc = "Save all" })
 
 -- Save all buffers and close
 map({ "i", "n" }, "<C-q>", "<cmd>SessionsSave<cr><cmd>silent! xa<cr>", { desc = "Save all and quit" })

@@ -4,4 +4,9 @@ return {
   setup = function()
     vim.fn["fzf#install"]()
   end,
+  opts = {
+    preview = {
+      winblend = 0,
+    },
+  },
 }
