@@ -60,6 +60,7 @@ return {
     { "<leader>ot", "<cmd>ObsidianTags<cr>", desc = "Tags" },
     { "<leader>ol", "<cmd>ObsidianLinkNew<cr>", desc = "Visual: Link new", mode = "v" },
     { "<leader>oL", "<cmd>ObsidianLinks<cr>", desc = "Links..." },
+    { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Backlinks..." },
     { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open in Obsidian App..." },
     {
       "<leader>on",
