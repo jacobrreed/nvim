@@ -140,6 +140,6 @@ local write_todo_note = function()
   local append = " - " .. input
   vim.cmd("!echo '" .. append .. "' >> ~/dev/notes/TODO.md", { silent = true })
 end
-
-vim.keymap.set("n", "<leader>ot", open_todo_float, { desc = "Toggle TODO list" })
-vim.keymap.set("n", "<leader>oa", write_todo_note, { desc = "Add to TODO list" })
+--
+-- vim.keymap.set("n", "<leader>ot", open_todo_float, { desc = "Toggle TODO list" })
+-- vim.keymap.set("n", "<leader>oa", write_todo_note, { desc = "Add to TODO list" })

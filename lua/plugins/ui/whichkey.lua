@@ -27,7 +27,7 @@ return {
             },
           },
           o = {
-            name = "TODO",
+            name = "Obsidian",
           },
           c = {
             name = "Code",
