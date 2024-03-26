@@ -61,6 +61,14 @@ return {
     { "<leader>ol", "<cmd>ObsidianLinkNew<cr>", desc = "Visual: Link new", mode = "v" },
     { "<leader>oL", "<cmd>ObsidianLinks<cr>", desc = "Links..." },
     { "<leader>ob", "<cmd>ObsidianBacklinks<cr>", desc = "Backlinks..." },
+    {
+      "<leader>op",
+      function()
+        local input = vim.fn.input("Image Name: ")
+        vim.cmd("ObsidianPasteImage " .. input)
+      end,
+      desc = "Paste Image...",
+    },
     { "<leader>oo", "<cmd>ObsidianOpen<cr>", desc = "Open in Obsidian App..." },
     {
       "<leader>on",
