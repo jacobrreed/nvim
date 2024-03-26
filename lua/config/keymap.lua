@@ -145,3 +145,6 @@ end
 --
 -- vim.keymap.set("n", "<leader>ot", open_todo_float, { desc = "Toggle TODO list" })
 -- vim.keymap.set("n", "<leader>oa", write_todo_note, { desc = "Add to TODO list" })
+
+-- Remap paste without losing text
+vim.keymap.set("v", "p", '"_dP')
