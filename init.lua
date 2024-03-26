@@ -14,8 +14,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { import = "plugins.ui" },
-  { import = "plugins.code" },
+  { import = "plugins" },
 }, {
   concurrency = jit.os:find("Windows") and (vim.loop.available_parallelism() * 2) or nil,
   install = {
