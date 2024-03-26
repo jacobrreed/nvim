@@ -55,6 +55,9 @@ return {
       end
       return tostring(suffix)
     end,
+    image_name_func = function()
+      return string.format("%s")
+    end,
   },
   keys = {
     { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New..." },
