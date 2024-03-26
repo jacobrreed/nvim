@@ -47,9 +47,9 @@ return {
   },
   keys = {
     { "<leader>on", "<cmd>ObsidianNew<cr>", desc = "New..." },
-    { "<leader>of", "<cmd>ObsidianQuickSwitch<cr>", desc = "Find..." },
+    { "<leader><leader>", "<cmd>ObsidianQuickSwitch<cr>", desc = "Find..." },
     {
-      "<leader>os",
+      "<leader>/",
       function()
         local input = vim.fn.input("Search/Create: ")
         vim.cmd("ObsidianSearch " .. input)
