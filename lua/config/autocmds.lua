@@ -110,8 +110,8 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   callback = function(args)
     vim.cmd("TSToolsAddMissingImports sync")
     vim.cmd("TSToolsRemoveUnusedImports sync")
-    if args.buf ~= nil then
-      require("plugins.conform").format({ bufnr = args.buf })
+    if package.loaded["conform"] then
+      require("conform").format({ bufnr = args.buf })
     end
   end,
 })
