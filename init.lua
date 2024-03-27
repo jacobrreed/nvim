@@ -31,6 +31,10 @@ require("lazy").setup({
     enabled = true,
     notify = false,
   },
+  ui = {
+    border = "rounded",
+    backdrop = 100,
+  },
   performance = {
     cache = {
       enabled = true,
