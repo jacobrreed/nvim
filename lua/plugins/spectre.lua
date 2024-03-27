@@ -1,6 +1,7 @@
 return {
   "nvim-pack/nvim-spectre",
   dependencies = { "nvim-lua/plenary.nvim" },
+  build = "./build.sh nvim-oxi",
   opts = {
     live_update = true,
     mapping = {
@@ -8,6 +9,11 @@ return {
         map = "<Space>",
         cmd = "<cmd>lua require('spectre').toggle_line()<cr>",
         desc = "toggle line",
+      },
+    },
+    default = {
+      replace = {
+        cmd = "oxi",
       },
     },
   },
