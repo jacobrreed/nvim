@@ -69,3 +69,5 @@ opt.foldlevel = 99
 opt.foldmethod = "indent"
 
 vim.g.markdown_recommended_style = 0
+
+vim.g.qf_is_open = false

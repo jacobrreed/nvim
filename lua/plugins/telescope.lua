@@ -47,6 +47,12 @@ return {
       end
     end
 
+    local smart_send_and_open_qflist = function(prompt_bufnr)
+      require("telescope.actions").smart_send_to_qflist(prompt_bufnr)
+      require("telescope.actions").open_qflist(prompt_bufnr)
+      vim.g.qf_is_open = true
+    end
+
     telescope.setup({
       pickers = {
         find_files = {
@@ -76,7 +82,7 @@ return {
           i = {
             ["<C-k>"] = actions.move_selection_previous,
             ["<C-j>"] = actions.move_selection_next,
-            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+            ["<C-q>"] = smart_send_and_open_qflist,
             ["<C-t>"] = require("trouble.providers.telescope").open_with_trouble,
             ["<C-u>"] = actions.preview_scrolling_up,
             ["<C-d>"] = actions.preview_scrolling_down,

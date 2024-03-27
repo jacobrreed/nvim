@@ -50,13 +50,7 @@ return {
             l = { "<cmd>SessionsLoad<cr>", "Load Session" },
             q = { "<cmd>xa!<cr>", "Save all and quit" },
           },
-          q = {
-            name = "Quickfix List",
-            o = { "<cmd>copen<cr>", "Open" },
-            c = { "<cmd>cclose<cr>", "Close" },
-          },
           r = { name = "Rename" },
-          h = { name = "Hawtkeys" },
           s = {
             name = "Search",
           },
