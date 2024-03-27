@@ -16,7 +16,7 @@ return {
     workspaces = {
       {
         name = "personal",
-        path = "~/dev/notes/",
+        path = "~/dev/vault/",
       },
     },
     completion = {
