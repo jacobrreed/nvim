@@ -55,18 +55,18 @@ return {
 
     telescope.setup({
       pickers = {
-        find_files = {
-          find_command = {
-            "rg",
-            "--files",
-            "--hidden",
-            "--no-ignore-vcs",
-            "-g",
-            "!**/.git/*",
-            "-g",
-            "!**/node_modules/*",
-          },
-        },
+        -- find_files = {
+        --   find_command = {
+        --     "rg",
+        --     "--files",
+        --     "--hidden",
+        --     "--no-ignore-vcs",
+        --     "-g",
+        --     "!**/.git/*",
+        --     "-g",
+        --     "!**/node_modules/*",
+        --   },
+        -- },
       },
       defaults = {
         history = {
@@ -123,6 +123,11 @@ return {
         "<leader><leader>",
         "<cmd>Telescope find_files<cr>",
         desc = "Find files",
+      },
+      {
+        "<leader>tF",
+        "<cmd>Telescope find_files find_command=rg,--files,--hidden,--no-ignore-vcs,-g,!**/.git/*,-g,!**/node_modules/*<cr>",
+        desc = "Find files (ALL)",
       },
       { "<leader>tb", "<cmd>Telescope buffers<cr>", desc = "Find buffers" },
       { "<leader>t/", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", desc = "Live grep" },
