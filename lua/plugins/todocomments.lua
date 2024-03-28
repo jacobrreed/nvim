@@ -16,11 +16,11 @@ return {
       WARNING = { icon = "󰀦", color = "warning" },
     },
     colors = {
-      actionItem = { "ActionItem", "#F1FA8C" },
-      default = { "Identifier", "#50FA7B" },
-      error = { "LspDiagnosticsDefaultError", "ErrorMsg", "#FF5555" },
-      info = { "LspDiagnosticsDefaultInformation", "#F8F8F2" },
-      warning = { "LspDiagnosticsDefaultWarning", "WarningMsg", "#FFB86C" },
+      actionItem = { "ActionItem", "#f1fc79" },
+      default = { "Identifier", "#37f499" },
+      error = { "LspDiagnosticsDefaultError", "ErrorMsg", "#f16c75" },
+      info = { "LspDiagnosticsDefaultInformation", "#ebfafa" },
+      warning = { "LspDiagnosticsDefaultWarning", "WarningMsg", "#f7c67f" },
     },
     highlight = {
       keyword = "bg",

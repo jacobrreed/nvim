@@ -1,6 +1,6 @@
 return {
   "eldritch-theme/eldritch-nvim",
-  priority = 1000,
+  priority = 2000,
   opts = {
     -- Sets transparent background
     -- If using lualine will also set transparent bg
