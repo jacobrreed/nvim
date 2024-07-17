@@ -126,3 +126,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     require("conform").format({ bufnr = bufnr, async = true, quiet = true, lsp_fallback = true, timeout = 1000 })
   end,
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("disable_nvim_cmp"),
+  pattern = { "oil" },
+  callback = function()
+    local cmp = require("cmp")
+    cmp.setup.buffer({
+      sources = nil,
+    })
+  end,
+})
