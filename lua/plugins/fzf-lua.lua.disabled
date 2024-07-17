@@ -1,0 +1,47 @@
+return {
+  "ibhagwan/fzf-lua",
+  config = function(_, opts)
+    require("fzf-lua").setup({ "default-title" })
+    require("fzf-lua").setup(opts)
+  end,
+  opts = {
+    winopts = {
+      height = 0.9,
+      width = 0.9,
+      fullscreen = false,
+    },
+    previewers = {
+      bat = {
+        cmd = "bat",
+        theme = "Eldritch",
+      },
+    },
+    fzf_colors = true,
+    files = {
+      previewer = "bat",
+      prompt = "❯ ",
+      formatter = "path.filename_first",
+    },
+    grep = {
+      prompt = "❯ ",
+    },
+  },
+  keys = {
+    {
+      "<leader>/",
+      function()
+        require("fzf-lua").live_grep_resume()
+      end,
+      mode = "n",
+      desc = "Live grep",
+    },
+    {
+      "<leader>/",
+      function()
+        require("fzf-lua").grep_visual()
+      end,
+      mode = "v",
+      desc = "Live grep (Visual)",
+    },
+  },
+}
