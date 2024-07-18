@@ -8,7 +8,8 @@ return {
         section_separators = { left = "", right = "" },
         icons_enabled = true,
         globalstatus = true,
-        disabled_filetypes = { statusline = { "dashboard" } },
+        refresh = { statusline = 1000, tabline = 1000 },
+        disabled_filetypes = { statusline = { "dashboard" }, tabline = { "dashboard" } },
       },
       extensions = { "neo-tree", "lazy" },
       sections = {

@@ -43,6 +43,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
@@ -51,6 +52,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     { import = "lazyvim.plugins.extras.util.project" },
     { import = "lazyvim.plugins.extras.util.startuptime" },
+    { import = "lazyvim.plugins.extras.coding.copilot-chat" },
     { import = "lazyvim.plugins.extras.util.rest" },
     { import = "plugins" },
   },
@@ -58,8 +60,9 @@ require("lazy").setup({
     lazy = false,
     version = false,
   },
-  install = { colorscheme = { "eldritch" } },
+  install = { colorscheme = { "eldritch" }, missing = true },
   checker = { enabled = true }, -- automatically check for plugin updates
+  change_detection = { notify = false },
   ui = {
     border = "rounded",
   },

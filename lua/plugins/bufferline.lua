@@ -1,15 +1,25 @@
 return {
   "akinsho/bufferline.nvim",
   version = "*",
-  lazy = false,
+  priority = 900,
+  event = { "VimEnter" },
   dependencies = { "nvim-tree/nvim-web-devicons", "famiu/bufdelete.nvim" },
   opts = {
     options = {
+      themable = true,
       mode = "buffers",
-      show_buffer_close_icons = true,
+      color_icons = true,
+      separator_style = { " ", " " },
       show_tab_indicators = false,
+      show_buffer_icons = true,
       max_name_length = 26,
+      hover = {
+        enabled = true,
+        delay = 200,
+        reveal = { "close" },
+      },
       diagnostics = "nvim_lsp",
+      always_show_bufferline = true,
       diagnostics_update_on_event = true, -- use nvim's diagnostic handler
       offsets = {
         {
