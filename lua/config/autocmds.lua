@@ -98,32 +98,11 @@ vim.api.nvim_create_user_command("MasonUpgrade", function()
 end, { force = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  group = vim.api.nvim_create_augroup("ts_fix_imports", { clear = true }),
-  desc = "Add missing imports and remove unused imports for TS",
-  pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
-  callback = function(args)
-    local bufnr = args.buf
-    -- Disable autoformat on certain filetypes
-    local ignore_filetypes = { "sql", "java" }
-    if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-      return
-    end
-    -- Disable with a global or buffer-local variable
-    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-      return
-    end
-    -- Disable autoformat for files in a certain path
-    local bufname = vim.api.nvim_buf_get_name(bufnr)
-    if bufname:match("/node_modules/") then
-      return
-    end
-    vim.cmd("TSToolsAddMissingImports sync")
-    vim.cmd("TSToolsRemoveUnusedImports sync")
-
-    if not vim.g.disable_autoformat and not vim.b[bufnr].disable_autoformat then
-      return
-    end
-    require("conform").format({ bufnr = bufnr, async = true, quiet = true, lsp_fallback = true, timeout = 1000 })
+  group = augroup("organise_imports"),
+  pattern = { "*.ts", ".tsx" },
+  callback = function()
+    vim.lsp.buf.code_action({ apply = true, context = { only = { "source.addMissingImports.ts" }, diagnostics = {} } })
+    vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnused.ts" }, diagnostics = {} } })
   end,
 })
 

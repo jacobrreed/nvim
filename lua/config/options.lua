@@ -56,6 +56,7 @@ opt.fillchars = {
 }
 
 opt.autochdir = false
+-- opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
 opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
 
 if vim.fn.has("nvim-0.10") == 1 then
