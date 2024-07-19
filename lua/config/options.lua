@@ -57,7 +57,7 @@ opt.fillchars = {
 
 opt.autochdir = false
 -- opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
-opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
+opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%r "
 
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
@@ -73,3 +73,5 @@ opt.foldmethod = "indent"
 vim.g.markdown_recommended_style = 0
 
 vim.g.qf_is_open = false
+
+vim.g.lazyvim_prettier_needs_config = true
