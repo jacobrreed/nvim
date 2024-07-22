@@ -1,9 +1,10 @@
 return {
   "folke/which-key.nvim",
   lazy = false,
+  priority = 900,
   opts = {
     preset = "modern",
-    delay = 0,
+    delay = 50,
     spec = {
       {
         mode = { "n", "v" },
