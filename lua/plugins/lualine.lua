@@ -13,12 +13,10 @@ return {
       },
       extensions = { "neo-tree", "lazy" },
       sections = {
-        lualine_a = { "mode" },
+        lualine_a = { { "mode", separator = { left = "", right = "" } } },
         lualine_b = { "branch" },
         lualine_c = {
-          {
-            "filename",
-          },
+          "filename",
           { "diff", symbols = { added = " ", modified = "󰣕 ", removed = " " } },
           "diagnostics",
         },
