@@ -2,6 +2,7 @@ return {
   "nvim-telescope/telescope.nvim",
   lazy = false,
   priority = 900,
+  -- enabled = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",

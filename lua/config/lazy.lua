@@ -62,8 +62,8 @@ require("lazy").setup({
     version = false,
   },
   install = { colorscheme = { "eldritch" }, missing = true },
-  checker = { enabled = true }, -- automatically check for plugin updates
-  change_detection = { notify = false },
+  checker = { enabled = true, notify = false }, -- automatically check for plugin updates
+  change_detection = { notify = false, enabled = true },
   ui = {
     border = "rounded",
   },

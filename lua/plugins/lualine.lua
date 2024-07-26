@@ -4,7 +4,7 @@ return {
     local opts = {
       options = {
         theme = "eldritch",
-        component_separators = "|",
+        component_separators = "",
         section_separators = { left = "", right = "" },
         icons_enabled = true,
         globalstatus = true,
@@ -15,6 +15,13 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch" },
+        lualine_c = {
+          {
+            "filename",
+          },
+          { "diff", symbols = { added = " ", modified = "󰣕 ", removed = " " } },
+          "diagnostics",
+        },
         lualine_x = {
           {
             "copilot",
@@ -25,26 +32,33 @@ return {
               status = {
                 icons = {
                   enabled = " ",
-                  sleep = " ", -- auto-trigger disabled
+                  sleep = " 󰒲",
                   disabled = " ",
                   warning = " ",
                   unknown = " ",
                 },
                 hl = {
-                  sleep = "#50FA7B",
+                  sleep = "#04d1f9",
                 },
               },
             },
           },
         },
         lualine_y = {
-          -- { "progress", separator = " ", padding = { left = 1, right = 0 } },
-          { "location", padding = { left = 1, right = 1 } },
+          "filetype",
         },
         lualine_z = {
           {
-            require("lazy.status").updates,
-            cond = require("lazy.status").has_updates,
+            function()
+              local lazyStatus = require("lazy.status")
+              local has_updates = lazyStatus.has_updates
+              local packages = require("lazy.status").updates
+              if has_updates() then
+                return "󱧕 " .. packages
+              else
+                return "󰏗 󰄵"
+              end
+            end,
           },
         },
       },
