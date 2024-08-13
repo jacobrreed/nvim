@@ -57,6 +57,8 @@ map({ "i", "x", "n", "s" }, "<CS-s>", "<cmd>wa<cr><esc>", { desc = "Save all" })
 map({ "i", "n" }, "<C-q>", "<cmd>silent! xa<cr>", { desc = "Save all and quit" })
 -- remove lazyvim quit all
 vim.keymap.del({ "n" }, "<leader>qq")
+-- remove lazyvim quit
+vim.keymap.del({ "n" }, "<leader>q")
 map({ "i", "n" }, "<C-x>", "<cmd>Bdelete<cr>", { desc = "Close current buffer" })
 
 -- better indenting
