@@ -3,13 +3,14 @@ return {
   event = "InsertEnter",
   config = function()
     local cmp = require("cmp")
+    local auto_select = true
 
     local opts = {
       experimental = {
         ghost_text = true,
       },
       completion = {
-        completeopt = "menu,menuone,preview,noselect",
+        completeopt = "menu,menuone,preview,noselect" .. (auto_select and "" or ",noselect"),
       },
       mapping = cmp.mapping.preset.insert({
         ["<C-Space>"] = cmp.mapping.complete(),
