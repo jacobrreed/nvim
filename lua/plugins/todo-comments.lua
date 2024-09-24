@@ -38,6 +38,6 @@ return {
     },
   },
   keys = {
-    { "<leader>ft", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "TODO list" },
+    { "<leader>tt", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "TODO list" },
   },
 }

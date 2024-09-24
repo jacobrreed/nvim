@@ -75,8 +75,8 @@ map("n", "<leader>|", "<C-W>v", { desc = "Split window right", remap = true })
 
 -- -- Rebind jj  and kk to escape
 -- Superceded by betterescape
--- map({ "i" }, "jj", "<Esc>")
--- map({ "i" }, "kk", "<Esc>")
+map({ "i" }, "jj", "<Esc>")
+map({ "i" }, "kk", "<Esc>")
 
 -- remap Insert to Esc, aka my CAPS lock key which is always bound to Insert on my desktop
 map({ "i", "n", "v", "x", "o", "t", "s", "x", "c", "l" }, "<Insert>", "<Esc>")

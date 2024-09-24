@@ -16,6 +16,7 @@ return {
         { "<leader>K", "<cmd>norm! K<cr>", desc = "Keywordprg", icon = " " },
         { "<leader>t", group = "Telescope", icon = " " },
         { "<leader>Q", group = "Session", icon = " " },
+        { "<leader>f", group = "file" },
       },
     },
   },

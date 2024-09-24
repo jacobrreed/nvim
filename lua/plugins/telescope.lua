@@ -1,31 +1,24 @@
 return {
   "nvim-telescope/telescope.nvim",
   lazy = false,
-  version = false,
   dependencies = {
-    "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
-    {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-    },
-    "nvim-tree/nvim-web-devicons",
     "debugloop/telescope-undo.nvim",
   },
   config = function()
     local telescope = require("telescope")
+    telescope.load_extension("fzf")
+    telescope.load_extension("live_grep_args")
+    require("telescope").load_extension("noice")
+    telescope.load_extension("undo")
+    telescope.load_extension("aerial")
+  end,
+  opts = function()
     local actions = require("telescope.actions")
 
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = "TelescopeResults",
-      callback = function(ctx)
-        vim.api.nvim_buf_call(ctx.buf, function()
-          vim.fn.matchadd("TelescopeParent", "\t\t.*$")
-          vim.api.nvim_set_hl(0, "TelescopeParent", { link = "Comment" })
-        end)
-      end,
-    })
-
+    local open_with_trouble = function(...)
+      return require("trouble.sources.telescope").open(...)
+    end
     local select_one_or_multi = function(prompt_bufnr)
       local picker = require("telescope.actions.state").get_current_picker(prompt_bufnr)
       local multi = picker:get_multi_selection()
@@ -47,9 +40,7 @@ return {
       vim.g.qf_is_open = true
     end
 
-    local open_with_trouble = require("trouble.sources.telescope").open
-
-    telescope.setup({
+    return {
       defaults = {
         history = {
           path = vim.fn.stdpath("data") .. "/telescope_history.sqlite",
@@ -99,12 +90,7 @@ return {
           },
         },
       },
-    })
-    telescope.load_extension("fzf")
-    telescope.load_extension("live_grep_args")
-    require("telescope").load_extension("noice")
-    telescope.load_extension("undo")
-    telescope.load_extension("aerial")
+    }
   end,
   keys = function()
     local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
