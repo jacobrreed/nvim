@@ -1,8 +1,7 @@
 return {
   "nvim-telescope/telescope.nvim",
   lazy = false,
-  priority = 900,
-  -- enabled = false,
+  version = false,
   dependencies = {
     "nvim-lua/plenary.nvim",
     "nvim-telescope/telescope-live-grep-args.nvim",
@@ -110,6 +109,11 @@ return {
   keys = function()
     local live_grep_args_shortcuts = require("telescope-live-grep-args.shortcuts")
     return {
+      {
+        "<leader>tp",
+        "<cmd>NeovimProjectDiscover<cr>",
+        desc = "Projects",
+      },
       {
         "<leader>tf",
         "<cmd>Telescope find_files<cr>",
