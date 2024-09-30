@@ -6,5 +6,6 @@ return {
     "SortJSONByKeyLength",
     "SortJSONByKeyLengthReverse",
   },
+  event = "Filetype json",
   config = true,
 }
