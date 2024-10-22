@@ -56,8 +56,14 @@ opt.fillchars = {
 }
 
 opt.autochdir = false
--- opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
-opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%r "
+--opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
+-- opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%r "
+opt.relativenumber = false
+
+vim.g.lazyvim_statuscolumn = {
+  folds_open = false,
+  folds_githl = false,
+}
 
 if vim.fn.has("nvim-0.10") == 1 then
   opt.smoothscroll = true
