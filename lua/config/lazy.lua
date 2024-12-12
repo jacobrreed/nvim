@@ -22,8 +22,8 @@ local checkerConcurrency = vim.fn.has("macunix") and 1 or nil
 require("lazy").setup({
   spec = {
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- { import = "lazyvim.plugins.extras.ui.edgy" },
     { import = "lazyvim.plugins.extras.ai.copilot" },
+    { import = "lazyvim.plugins.extras.formatting.black" },
     { import = "lazyvim.plugins.extras.coding.luasnip" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
@@ -47,9 +47,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.yaml" },
     { import = "lazyvim.plugins.extras.linting.eslint" },
     { import = "lazyvim.plugins.extras.formatting.prettier" },
-    -- { import = "lazyvim.plugins.extras.ui.dashboard-nvim" },
     { import = "lazyvim.plugins.extras.editor.dial" },
-    -- { import = "lazyvim.plugins.extras.editor.fzf" },
     { import = "lazyvim.plugins.extras.test.core" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
