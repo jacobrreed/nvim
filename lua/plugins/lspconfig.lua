@@ -1,26 +1,31 @@
 return {
   "neovim/nvim-lspconfig",
   vscode = false,
-  opts = {
-    servers = { eslint = {
-      settings = {
-        workingDirectory = { mode = "auto" },
-      },
-    } },
-    inlay_hints = {
-      enabled = false,
-    },
-    setup = {
-      eslint = function()
-        require("lazyvim.util").lsp.on_attach(function(client)
-          if client.name == "eslint" then
-            client.server_capabilities.documentFormattingProvider = true
-          elseif client.name == "tsserver" then
-            client.server_capabilities.documentFormattingProvider = false
-          end
-        end)
-        vim.cmd([[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]])
-      end,
-    },
-  },
+  opts = function(_, opts)
+    local keys = require("lazyvim.plugins.lsp.keymaps").get()
+    keys[#keys + 1] = { "<C-k>", false, mode = { "i" } }
+    -- keys[#keys + 1] = {
+    --   "<c-???>",
+    --   function()
+    --     return vim.lsp.buf.signature_help()
+    --   end,
+    --   mode = "i",
+    --   desc = "Signature Help",
+    --   has = "signatureHelp",
+    -- }
+
+    opts.servers.eslint.settings.workingDirectory = { mode = "auto" }
+    opts.inlay_hints = { enabled = false }
+    opts.setup.eslint = function()
+      require("lazyvim.util").lsp.on_attach(function(client)
+        if client.name == "eslint" then
+          client.server_capabilities.documentFormattingProvider = true
+        elseif client.name == "tsserver" then
+          client.server_capabilities.documentFormattingProvider = false
+        end
+      end)
+      vim.cmd([[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]])
+    end
+    return opts
+  end,
 }

@@ -17,5 +17,6 @@ return {
         selection = "manual",
       },
     },
+    signature = { enable = true },
   },
 }
