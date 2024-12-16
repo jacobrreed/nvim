@@ -34,7 +34,7 @@ return {
       ["g?"] = "actions.show_help",
       ["<CR>"] = "actions.select",
       ["q"] = "actions.close",
-      ["<backspace>"] = "actions.parent",
+      ["<C-k>"] = "actions.parent",
       ["gv"] = "actions.select_vsplit",
       ["gh"] = "actions.select_split",
       ["<C-t>"] = "actions.select_tab",
