@@ -91,6 +91,8 @@ map({ "n" }, "<C-t>", "<Nop>")
 
 -- Remap D to blackhole delete
 map({ "n", "v" }, "D", '"_d')
+-- Remap C to blackhole change
+map({ "n", "v" }, "C", '"_c')
 
 -- Map to take current selection and search/replace it
 table.unpack = table.unpack or unpack

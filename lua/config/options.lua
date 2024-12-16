@@ -56,9 +56,9 @@ opt.fillchars = {
 }
 
 opt.autochdir = false
---opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
+-- opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%{v:lnum<line('.')?'-':''}%r "
 -- opt.statuscolumn = "%s%#AbsoluteColumn#%l%1*│%r "
-opt.relativenumber = false
+opt.relativenumber = true
 
 vim.g.lazyvim_statuscolumn = {
   folds_open = false,
