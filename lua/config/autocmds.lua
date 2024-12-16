@@ -102,17 +102,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.ts", ".tsx" },
   callback = function()
     vim.lsp.buf.code_action({ apply = true, context = { only = { "source.addMissingImports.ts" }, diagnostics = {} } })
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("disable_nvim_cmp"),
-  pattern = { "oil" },
-  callback = function()
-    local cmp = require("cmp")
-    cmp.setup.buffer({
-      sources = nil,
-    })
+    vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnused.ts" }, diagnostics = {} } })
   end,
 })
 

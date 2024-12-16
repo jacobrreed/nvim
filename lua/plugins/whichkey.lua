@@ -2,8 +2,6 @@ return {
   "folke/which-key.nvim",
   vscode = false,
   opts = {
-    preset = "modern",
-    delay = 50,
     spec = {
       {
         mode = { "n", "v" },
