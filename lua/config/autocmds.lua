@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 local numtogGrp = vim.api.nvim_create_augroup("NumberToggle", { clear = true })
-vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "FocusGained" }, {
+vim.api.nvim_create_autocmd({ "InsertLeave" }, {
   pattern = "*",
   callback = function()
     local ignore = { "oil", "fzf" }
@@ -120,7 +120,7 @@ vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "FocusGained" }, {
   group = numtogGrp,
   desc = "Turn on relative line numbering when the buffer is entered.",
 })
-vim.api.nvim_create_autocmd({ "BufLeave", "InsertEnter", "FocusLost" }, {
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   pattern = "*",
   callback = function()
     local ignore = { "oil", "fzf" }

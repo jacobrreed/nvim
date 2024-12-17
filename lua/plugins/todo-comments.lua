@@ -38,6 +38,19 @@ return {
     },
   },
   keys = {
-    { "<leader>tt", "<cmd>TodoTelescope keywords=TODO<cr>", desc = "TODO List" },
+    {
+      "<leader>st",
+      function()
+        require("todo-comments.fzf").todo({ keywords = { "TODO" } })
+      end,
+      desc = "TODO List",
+    },
+    {
+      "<leader>sT",
+      function()
+        require("todo-comments.fzf").todo({ keywords = { "TODO", "FIXME", "FIX" } })
+      end,
+      desc = "TODO/FIX/ List",
+    },
   },
 }
