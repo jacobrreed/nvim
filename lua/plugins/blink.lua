@@ -12,11 +12,5 @@ return {
       ["<C-e>"] = { "hide", "fallback" },
       ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
     },
-    completion = {
-      list = {
-        selection = "manual",
-      },
-    },
-    signature = { enable = true },
   },
 }
