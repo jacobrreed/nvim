@@ -110,6 +110,10 @@ local numtogGrp = vim.api.nvim_create_augroup("NumberToggle", { clear = true })
 vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "FocusGained" }, {
   pattern = "*",
   callback = function()
+    local ignore = { "oil", "fzf" }
+    if ignore[vim.bo.filetype] then
+      return
+    end
     vim.wo.relativenumber = true
   end,
 
@@ -119,6 +123,10 @@ vim.api.nvim_create_autocmd({ "BufEnter", "InsertLeave", "FocusGained" }, {
 vim.api.nvim_create_autocmd({ "BufLeave", "InsertEnter", "FocusLost" }, {
   pattern = "*",
   callback = function()
+    local ignore = { "oil", "fzf" }
+    if ignore[vim.bo.filetype] then
+      return
+    end
     vim.wo.relativenumber = false
   end,
   group = numtogGrp,
