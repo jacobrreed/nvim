@@ -2,6 +2,11 @@ return {
   "mikesmithgh/kitty-scrollback.nvim",
   vscode = false,
   lazy = true,
+  enabled = function()
+    if os.getenv("TERM") == "xterm-kitty" then
+      return true
+    end
+  end,
   cmd = { "KittyScrollbackGenerateKittens", "KittyScrollbackCheckHealth" },
   event = { "User KittyScrollbackLaunch" },
   -- version = '*', -- latest stable version, may have breaking changes if major version changed
