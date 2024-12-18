@@ -1,7 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
   opts = {
-    fzf_opts = { ["--wrap"] = true },
     -- Transparent
     fzf_colors = {
       true,
