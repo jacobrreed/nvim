@@ -5,8 +5,8 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "chafa ~/pics/anime-girl-eye.jpg --format symbols --symbols vhalf --size 60x17 --stretch; sleep .1",
-          height = 17,
+          cmd = "chafa ~/.config/nvim/eldritch.png --format=symbols --symbols=vhalf --size 60x25 --stretch; sleep .1",
+          height = 25,
           padding = 1,
         },
         { section = "keys", gap = 1, padding = 1 },
