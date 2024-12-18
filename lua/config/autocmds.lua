@@ -132,3 +132,11 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
   group = numtogGrp,
   desc = "Turn off relative line numbering when the buffer is exited.",
 })
+
+-- Disable minipairs for files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "markdown" },
+  callback = function(event)
+    vim.keymap.set("i", "`", "`", { buffer = event.buf })
+  end,
+})
