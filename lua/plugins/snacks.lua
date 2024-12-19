@@ -5,7 +5,7 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "chafa ~/.config/nvim/eldritch.png --format=symbols --symbols=vhalf --size 60x25 --stretch; sleep .1",
+          cmd = "cat ~/.config/nvim/anime-chafa.txt",
           height = 25,
           padding = 1,
         },
