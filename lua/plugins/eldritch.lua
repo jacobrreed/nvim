@@ -1,7 +1,7 @@
 return {
-  dir = "~/dev/eldritch-workspace/eldritch.nvim",
+  "eldritch-theme/eldritch.nvim",
+  -- dir = "~/dev/eldritch-workspace/eldritch.nvim",
   vscode = false,
-  -- "eldritch-theme/eldritch.nvim",
   priority = 1000,
   opts = {
     transparent = true,
