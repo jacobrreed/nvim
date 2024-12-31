@@ -1,10 +1,11 @@
 return {
-  "eldritch-theme/eldritch.nvim",
-  -- dir = "~/dev/eldritch-workspace/eldritch.nvim",
+  -- "eldritch-theme/eldritch.nvim",
+  dir = "~/dev/eldritch-workspace/eldritch.nvim",
   vscode = false,
   priority = 1000,
   opts = {
     transparent = true,
+    -- palette = "darker",
   },
   config = function(_, opts)
     local eldritch = require("eldritch")
