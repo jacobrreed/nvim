@@ -13,6 +13,18 @@ return {
     --   desc = "Signature Help",
     --   has = "signatureHelp",
     -- }
+    keys[#keys + 1] = {
+      "<leader>cr",
+      function()
+        local inc_rename = require("inc_rename")
+        -- Overrides default and erases name for inc rename instead of keeping same name
+        -- so we dont have to backspace
+        return ":" .. inc_rename.config.cmd_name .. " "
+      end,
+      expr = true,
+      desc = "Rename (inc-rename.nvim)",
+      has = "rename",
+    }
 
     opts.servers.eslint.settings.workingDirectory = { mode = "auto" }
     opts.inlay_hints = { enabled = false }

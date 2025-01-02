@@ -12,10 +12,10 @@ return {
         height = 10,
       },
       edit = {
-        start_insert = false,
+        start_insert = true,
       },
       ask = {
-        start_insert = false,
+        start_insert = true,
       },
     },
   },
