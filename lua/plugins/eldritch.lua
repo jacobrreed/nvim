@@ -5,7 +5,6 @@ return {
   priority = 1000,
   opts = {
     transparent = true,
-    -- palette = "darker",
   },
   config = function(_, opts)
     local eldritch = require("eldritch")

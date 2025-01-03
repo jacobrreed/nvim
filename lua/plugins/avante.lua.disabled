@@ -18,6 +18,10 @@ return {
         start_insert = true,
       },
     },
+    copilot = {
+      endpoint = "https://api.githubcopilot.com",
+      model = "claude-3-5-sonnet-20241022",
+    },
   },
   build = "make",
   dependencies = {
