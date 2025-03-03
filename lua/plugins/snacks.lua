@@ -41,7 +41,7 @@ return {
           local cmds = {
             {
               title = "Open Issues",
-              cmd = "gh issue list -L 2",
+              cmd = "gh issue list -L 2 || 0",
               key = "i",
               action = function()
                 vim.fn.jobstart("gh issue list --web", { detach = true })
@@ -52,7 +52,7 @@ return {
             {
               icon = " ",
               title = "Open PRs",
-              cmd = "gh pr list -L 2",
+              cmd = "gh pr list -L 2 || 0",
               key = "P",
               action = function()
                 vim.fn.jobstart("gh pr list --web", { detach = true })
