@@ -15,7 +15,7 @@ return {
   "monaqa/dial.nvim",
   keys = {
     {
-      "<C-w>",
+      "<C-a>",
       function()
         return M.dial(true)
       end,
@@ -24,7 +24,7 @@ return {
       mode = { "n", "v" },
     },
     {
-      "<C-a>",
+      "<C-x>",
       function()
         return M.dial(false)
       end,
@@ -33,7 +33,7 @@ return {
       mode = { "n", "v" },
     },
     {
-      "g<C-w>",
+      "g<C-a>",
       function()
         return M.dial(true, true)
       end,
@@ -42,7 +42,7 @@ return {
       mode = { "n", "v" },
     },
     {
-      "g<C-a>",
+      "g<C-x>",
       function()
         return M.dial(false, true)
       end,

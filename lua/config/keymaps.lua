@@ -52,10 +52,10 @@ map("i", ";", ";<c-g>u")
 map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w!<cr><esc>", { desc = "Save file" })
 -- SAVE ALL
 map({ "i", "x", "n", "s" }, "<CS-s>", "<cmd>wa<cr><esc>", { desc = "Save all" })
-
 -- Save all buffers and close
 map({ "i", "n" }, "<C-q>", "<cmd>silent! xa<cr>", { desc = "Save all and quit" })
-map({ "i", "n" }, "<C-x>", ":lua require('snacks').bufdelete()<cr>", { desc = "Delete buffer", silent = true })
+-- Close current buffer
+-- map({ "i", "n" }, "<C-x>", ":lua require('snacks').bufdelete()<cr>", { desc = "Delete buffer", silent = true })
 
 -- remove lazyvim quit all
 vim.keymap.del({ "n" }, "<leader>qq")
