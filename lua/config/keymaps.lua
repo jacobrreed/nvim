@@ -125,3 +125,18 @@ if os.getenv("TERM") == "xterm-kitty" then
     noremap <silent> <c-k> :<C-U>KittyNavigateUp<cr>
   ]])
 end
+
+-- Diff to clipboard
+local function compareToClip()
+  local ftype = vim.api.nvim_eval("&filetype")
+  vim.cmd("vsplit")
+  vim.cmd("enew")
+  vim.cmd("normal! P")
+  vim.cmd("setlocal buftype=nowrite")
+  vim.cmd("set filetype=" .. ftype)
+  vim.cmd("diffthis")
+  vim.cmd([[execute "normal! \<C-w>h"]])
+  vim.cmd("diffthis")
+end
+
+map({ "n" }, "<leader>D", compareToClip, { desc = "Diff vs clipboard" })
