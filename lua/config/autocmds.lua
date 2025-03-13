@@ -134,9 +134,11 @@ vim.api.nvim_create_autocmd({ "InsertEnter" }, {
 })
 
 -- Disable minipairs for files
+-- disable copilot cmp
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown" },
   callback = function(event)
     vim.keymap.set("i", "`", "`", { buffer = event.buf })
+    vim.b.ai_cmp = false
   end,
 })

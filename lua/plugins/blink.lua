@@ -2,7 +2,7 @@ return {
   "saghen/blink.cmp",
   opts = {
     enabled = function()
-      return not vim.tbl_contains({ "copilot-chat", "markdown" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
+      return not vim.tbl_contains({ "copilot-chat" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
     end,
     completion = {
       list = {
