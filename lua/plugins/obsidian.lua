@@ -1,3 +1,4 @@
+local prefix = "<leader>o"
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
@@ -73,5 +74,23 @@ return {
       -- Insert a tag at the current location.
       insert_tag = "<C-l>",
     },
+  },
+  keys = {
+    -- TODO add/remove
+    { prefix .. "o", "<cmd>ObsidianOpen<CR>", desc = "Open on App" },
+    { "<leader>sO", "<cmd>ObsidianSearch<CR>", desc = "Obsidian Grep" },
+    { prefix .. "n", "<cmd>ObsidianNew<CR>", desc = "New Note" },
+    { prefix .. "<space>", "<cmd>ObsidianQuickSwitch<CR>", desc = "Find Files" },
+    { prefix .. "b", "<cmd>ObsidianBacklinks<CR>", desc = "Backlinks" },
+    { prefix .. "t", "<cmd>ObsidianTags<CR>", desc = "Tags" },
+    { prefix .. "t", "<cmd>ObsidianTemplate<CR>", desc = "Template" },
+    { prefix .. "l", "<cmd>ObsidianLink<CR>", mode = "v", desc = "Link" },
+    { prefix .. "L", "<cmd>ObsidianLinks<CR>", desc = "Links" },
+    { prefix .. "N", "<cmd>ObsidianLinkNew<CR>", mode = "v", desc = "New Link" },
+    { prefix .. "e", "<cmd>ObsidianExtractNote<CR>", mode = "v", desc = "Extract Note" },
+    { prefix .. "w", "<cmd>ObsidianWorkspace<CR>", desc = "Workspace" },
+    { prefix .. "r", "<cmd>ObsidianRename<CR>", desc = "Rename" },
+    { prefix .. "i", "<cmd>ObsidianPasteImg<CR>", desc = "Paste Image" },
+    { prefix .. "d", "<cmd>ObsidianDailies<CR>", desc = "Daily Notes" },
   },
 }
