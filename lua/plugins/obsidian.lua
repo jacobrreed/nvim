@@ -28,18 +28,11 @@ return {
     },
     mappings = {
       -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-      ["gf"] = {
+      ["gd"] = {
         action = function()
           return require("obsidian").util.gf_passthrough()
         end,
         opts = { noremap = false, expr = true, buffer = true },
-      },
-      -- Toggle check-boxes.
-      ["<leader>ch"] = {
-        action = function()
-          return require("obsidian").util.toggle_checkbox()
-        end,
-        opts = { buffer = true },
       },
       -- Smart action depending on context, either follow link or toggle checkbox.
       ["<cr>"] = {
@@ -73,6 +66,12 @@ return {
       tag_note = "<C-x>",
       -- Insert a tag at the current location.
       insert_tag = "<C-l>",
+    },
+    ui = {
+      checkboxes = {
+        [" "] = { char = "▢", hl_group = "ObsidianTodo" },
+        ["x"] = { char = "✓", hl_group = "ObsidianDone" },
+      },
     },
   },
   keys = {

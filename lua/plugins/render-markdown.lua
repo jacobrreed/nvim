@@ -6,5 +6,11 @@ return {
     bullet = {
       right_pad = 1,
     },
+    checkbox = {
+      enabled = true,
+      unchecked = { icon = "▢ " },
+      checked = { icon = "✓ " },
+      custom = { todo = { rendered = "◯ " } },
+    },
   },
 }
