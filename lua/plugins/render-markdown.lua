@@ -3,14 +3,8 @@ return {
   opts = {
     file_types = { "markdown", "copilot-chat", "rmd", "norg", "org" },
     preset = "obsidian",
-    code = {
-      sign = true,
-    },
-    heading = {
-      sign = true,
-    },
-    checkbox = {
-      enabled = true,
+    bullet = {
+      right_pad = 1,
     },
   },
 }
