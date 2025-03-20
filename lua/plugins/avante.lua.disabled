@@ -5,7 +5,6 @@ return {
   version = false,
   opts = {
     provider = "copilot",
-    auto_suggestions_provider = "copilot",
     windows = {
       width = 40,
       input = {
@@ -18,9 +17,8 @@ return {
         start_insert = true,
       },
     },
-    copilot = {
-      endpoint = "https://api.githubcopilot.com",
-      model = "claude-3-5-sonnet-20241022",
+    web_search_engine = {
+      provider = "kagi",
     },
   },
   build = "make",
@@ -28,6 +26,7 @@ return {
     "stevearc/dressing.nvim",
     "nvim-lua/plenary.nvim",
     "MunifTanjim/nui.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     {
       "HakonHarnes/img-clip.nvim",
       event = "VeryLazy",
@@ -41,13 +40,6 @@ return {
           use_absolute_path = true,
         },
       },
-    },
-    {
-      "MeanderingProgrammer/render-markdown.nvim",
-      opts = {
-        file_types = { "markdown", "Avante" },
-      },
-      ft = { "markdown", "Avante" },
     },
   },
 }

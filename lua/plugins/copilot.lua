@@ -17,6 +17,12 @@ return {
       auto_insert_mode = false,
       model = "claude-3.7-sonnet",
       highlight_headers = false,
+      show_diff = {
+        full_diff = true,
+      },
+      question_header = "#   Me",
+      answer_header = "#   Copilot Chat",
+      error_header = "> [!ERROR]  ",
     },
   },
 }

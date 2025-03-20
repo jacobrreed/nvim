@@ -4,6 +4,11 @@ return {
     enabled = function()
       return not vim.tbl_contains({ "copilot-chat" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
     end,
+    sources = {
+      per_filetype = {
+        codecompanion = { "codecompanion" },
+      },
+    },
     completion = {
       list = {
         -- selection = "manual",

@@ -1,7 +1,15 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
+  ft = { "Avante", "markdown", "copilot-chat", "rmd", "norg", "org" },
   opts = {
-    file_types = { "markdown", "copilot-chat", "rmd", "norg", "org" },
+    anti_conceal = {
+      enabled = true,
+      ignore = {
+        code_background = true,
+        sign = true,
+      },
+    },
+    completions = { blink = { enabled = true } },
     preset = "obsidian",
     bullet = {
       right_pad = 1,
