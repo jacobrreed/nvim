@@ -19,6 +19,7 @@ return {
       unchecked = { icon = "▢ " },
       checked = { icon = "✓ " },
       custom = { todo = { rendered = "◯ " } },
+      right_pad = 1,
     },
   },
 }

@@ -11,6 +11,7 @@ return {
     "nvim-lua/plenary.nvim",
   },
   opts = {
+    ui = { enable = false },
     workspaces = {
       {
         name = "vault",
@@ -66,12 +67,6 @@ return {
       tag_note = "<C-x>",
       -- Insert a tag at the current location.
       insert_tag = "<C-l>",
-    },
-    ui = {
-      checkboxes = {
-        [" "] = { char = "▢", hl_group = "ObsidianTodo" },
-        ["x"] = { char = "✓", hl_group = "ObsidianDone" },
-      },
     },
   },
   keys = {
