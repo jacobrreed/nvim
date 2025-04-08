@@ -10,7 +10,9 @@ return {
       separator_style = { " ", " " },
       show_tab_indicators = false,
       show_buffer_icons = true,
-      max_name_length = 26,
+      max_name_length = 22,
+      tab_size = 22,
+      truncate_names = true,
       hover = {
         enabled = true,
         delay = 200,
