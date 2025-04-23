@@ -17,14 +17,14 @@ return {
         lualine_a = { { "mode", separator = { left = "", right = "" } } },
         lualine_b = { "branch" },
         lualine_c = {
-          "filename",
+          { "filename", file_status = true, newfile_status = true, path = 0, shorting_target = 40 },
           { "diff", symbols = { added = " ", modified = "󰣕 ", removed = " " } },
           "diagnostics",
         },
         lualine_x = {
           {
-            require("noice").api.statusline.mode.get,
-            cond = require("noice").api.statusline.mode.has,
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
             color = { fg = "#ff9e64" },
           },
           {

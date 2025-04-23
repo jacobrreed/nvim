@@ -6,29 +6,29 @@ return {
     options = {
       themable = true,
       mode = "buffers",
+      indicator = {
+        style = "underline",
+      },
       color_icons = true,
-      separator_style = { " ", " " },
+      separator_style = "thin",
       show_tab_indicators = false,
       show_buffer_icons = true,
-      max_name_length = 22,
-      tab_size = 22,
+      max_name_length = 16,
+      max_prefix_length = 10,
+      tab_size = 20,
+      name_formatter = function(buf)
+        local name = buf.name or ""
+        return name:gsub("intent%.[%w_]+%.", "🛈")
+      end,
       truncate_names = true,
       hover = {
         enabled = true,
-        delay = 200,
+        delay = 100,
         reveal = { "close" },
       },
       diagnostics = "nvim_lsp",
       always_show_bufferline = true,
       diagnostics_update_on_event = true, -- use nvim's diagnostic handler
-      offsets = {
-        {
-          filetype = "neo-tree",
-          text = "Neo-tree",
-          highlight = "Directory",
-          text_align = "left",
-        },
-      },
     },
   },
   keys = function()

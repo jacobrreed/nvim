@@ -1,12 +1,21 @@
 return {
   "saghen/blink.cmp",
+  dependencies = {
+    "Kaiser-Yang/blink-cmp-avante",
+  },
   opts = {
     enabled = function()
       return not vim.tbl_contains({ "copilot-chat" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
     end,
     sources = {
       per_filetype = {
-        codecompanion = { "codecompanion" },
+        avante = { "avante" },
+      },
+      providers = {
+        avante = {
+          module = "blink-cmp-avante",
+          name = "Avante",
+        },
       },
     },
     completion = {
