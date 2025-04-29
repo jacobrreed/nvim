@@ -9,7 +9,7 @@ return {
     delete_to_trash = false,
     prompt_save_on_select_new_entry = false,
     skip_confirm_for_simple_edits = true,
-    cleanup_delay_ms = 500,
+    cleanup_delay_ms = 2000,
     enabled = false,
     lsp_file_methods = {
       enabled = true,
