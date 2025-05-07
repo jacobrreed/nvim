@@ -23,6 +23,48 @@ return {
       question_header = "#   Me",
       answer_header = "#   Copilot Chat",
       error_header = "> [!ERROR]  ",
+      mappings = {
+        reset = {
+          normal = "<C-S-l>",
+          insert = "<C-S-l>",
+        },
+        complete = {
+          insert = "<tab>",
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>as",
+        function()
+          vim.ui.input({ prompt = "Save Copilot Chat (name): " }, function(input)
+            vim.cmd("CopilotChatSave " .. input)
+          end)
+        end,
+        desc = "Save chat",
+      },
+      {
+        "<leader>al",
+        function()
+          vim.api.nvim_input("<Esc>:CopilotChatLoad ")
+        end,
+        desc = "Load chat",
+      },
+      {
+        "<leader>aA",
+        "<cmd>CopilotChatAgents<cr>",
+        desc = "Agents",
+      },
+      {
+        "<leader>am",
+        "<cmd>CopilotChatModels<cr>",
+        desc = "Models",
+      },
+      {
+        "<leader>aS",
+        "<cmd>CopilotChatStop<cr>",
+        desc = "Stop",
+      },
     },
   },
 }

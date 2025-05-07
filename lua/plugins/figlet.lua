@@ -7,7 +7,7 @@ return {
     {
       "<leader>A",
       function()
-        local word = vim.ui.input({ prompt = "Banner text: " }, function(input)
+        vim.ui.input({ prompt = "Banner text: " }, function(input)
           vim.cmd("FigComment " .. input)
         end)
       end,
