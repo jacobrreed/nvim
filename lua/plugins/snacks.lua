@@ -79,4 +79,20 @@ return {
       },
     },
   },
+  keys = {
+    {
+      "<leader>j",
+      function()
+        Snacks.picker.jumps()
+      end,
+      desc = "jumps",
+    },
+    {
+      "<leader>m",
+      function()
+        Snacks.picker.jumps()
+      end,
+      desc = "marks",
+    },
+  },
 }
