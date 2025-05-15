@@ -88,11 +88,11 @@ return {
       desc = "jumps",
     },
     {
-      "<leader>m",
+      "<leader>ml",
       function()
-        Snacks.picker.jumps()
+        Snacks.picker.marks()
       end,
-      desc = "marks",
+      desc = "List",
     },
   },
 }
