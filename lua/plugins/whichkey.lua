@@ -12,12 +12,6 @@ return {
           mode = "v",
           icon = { icon = "✀ " },
         },
-        {
-          "<leader>m",
-          group = "marks",
-          mode = "n",
-          icon = { icon = "" },
-        },
       },
     },
   },

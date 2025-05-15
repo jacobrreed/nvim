@@ -88,7 +88,7 @@ return {
       desc = "jumps",
     },
     {
-      "<leader>ml",
+      "ml",
       function()
         Snacks.picker.marks()
       end,
