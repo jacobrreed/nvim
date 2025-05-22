@@ -1,7 +1,36 @@
 return {
   "folke/snacks.nvim",
+  config = function(_, opts)
+    local snacks = require("snacks")
+    snacks.setup(opts)
+    vim.api.nvim_set_hl(0, "SnacksDim", { link = "Comment" })
+    snacks.dim.enable()
+    snacks.indent.enable()
+  end,
   opts = {
+    animate = { enabled = true },
+    bigfile = { enabled = true },
+    dim = { enabled = true },
+    scope = { enabled = true },
+    rename = { enabled = true },
+    git = { enabled = false },
+    indent = {
+      enabled = true,
+      hl = {
+        "SnacksIndent1",
+        "SnacksIndent2",
+        "SnacksIndent3",
+        "SnacksIndent4",
+        "SnacksIndent5",
+        "SnacksIndent6",
+        "SnacksIndent7",
+        "SnacksIndent8",
+      },
+    },
+    input = { enabled = true },
+    lazygit = { enabled = true },
     picker = {
+      enabled = true,
       actions = {
         qflist_append = function(picker)
           picker:close()
@@ -34,6 +63,7 @@ return {
       },
     },
     dashboard = {
+      enabled = true,
       sections = {
         -- {
         --   section = "terminal",
