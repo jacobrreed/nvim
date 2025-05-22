@@ -7,6 +7,11 @@ return {
       {
         mode = { "n", "v" },
         {
+          "<leader>a",
+          group = "+ai",
+          icon = { icon = "󰚩" },
+        },
+        {
           "<leader>S",
           group = "snippet",
           mode = "v",

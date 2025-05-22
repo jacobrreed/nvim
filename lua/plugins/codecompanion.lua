@@ -20,7 +20,7 @@ return {
     { "<leader>aA", "<cmd>CodeCompanionActions<cr>", desc = "Actions" },
     { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", mode = "v", desc = "Chat toggle" },
     { "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", desc = "Chat toggle" },
-    { "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "inline chat" },
+    { "<leader>ai", "<cmd>CodeCompanion<cr>", desc = "Ask" },
     {
       "<leader>ac",
       function()

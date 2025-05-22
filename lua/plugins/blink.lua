@@ -5,13 +5,12 @@ return {
   },
   opts = {
     enabled = function()
-      return not vim.tbl_contains({ "copilot-chat", "oil" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
+      return not vim.tbl_contains({ "oil" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
     end,
     sources = {
       per_filetype = {
         codecompanion = { "codecompanion" },
       },
-      providers = {},
     },
     completion = {
       trigger = { prefetch_on_insert = false },
