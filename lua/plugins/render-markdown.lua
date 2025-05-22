@@ -1,6 +1,6 @@
 return {
   "MeanderingProgrammer/render-markdown.nvim",
-  ft = { "Avante", "markdown", "copilot-chat", "rmd", "norg", "org" },
+  ft = { "codecompanion", "Avante", "markdown", "copilot-chat", "rmd", "norg", "org" },
   opts = {
     anti_conceal = {
       enabled = true,

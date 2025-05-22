@@ -9,16 +9,12 @@ return {
     end,
     sources = {
       per_filetype = {
-        avante = { "avante" },
+        codecompanion = { "codecompanion" },
       },
-      providers = {
-        avante = {
-          module = "blink-cmp-avante",
-          name = "Avante",
-        },
-      },
+      providers = {},
     },
     completion = {
+      trigger = { prefetch_on_insert = false },
       list = {
         -- selection = "manual",
         selection = {
