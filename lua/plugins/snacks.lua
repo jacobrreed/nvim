@@ -4,7 +4,7 @@ return {
     local snacks = require("snacks")
     snacks.setup(opts)
     vim.api.nvim_set_hl(0, "SnacksDim", { link = "Comment" })
-    snacks.dim.enable()
+    -- snacks.dim.enable()
     snacks.indent.enable()
   end,
   opts = {
