@@ -5,7 +5,7 @@ return {
   },
   opts = {
     enabled = function()
-      return not vim.tbl_contains({ "oil" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
+      return not vim.tbl_contains({ "oil", "markdown" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
     end,
     sources = {
       per_filetype = {

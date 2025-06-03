@@ -2,14 +2,21 @@ return {
   "obsidian-nvim/obsidian.nvim",
   version = "*",
   lazy = true,
-  event = {
-    "BufReadPre " .. vim.fn.expand("~") .. "/vault/*.md",
-    "BufNewFile " .. vim.fn.expand("~") .. "/vault/*.md",
-  },
+  event = "VimEnter",
+  cond = function()
+    -- Check if the current working directory is within the vault
+    local cwd = vim.fn.getcwd()
+    local vault_path = vim.fn.expand("~/vault")
+    return vim.startswith(cwd, vault_path)
+  end,
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
   config = function(_, opts)
+    local wk = require("which-key")
+    wk.add({
+      { "<leader>o", group = "Obsidian", icon = "" },
+    })
     local prefix = "<leader>o"
 
     local mappings = {
@@ -19,7 +26,7 @@ return {
       { prefix .. "<space>", "<cmd>ObsidianQuickSwitch<CR>", desc = "Find Files" },
       { prefix .. "b", "<cmd>ObsidianBacklinks<CR>", desc = "Backlinks" },
       { prefix .. "t", "<cmd>ObsidianTags<CR>", desc = "Tags" },
-      { prefix .. "T", "<cmd>ObsidianTemplate<CR>", desc = "Template" },
+      { prefix .. "T", "<cmd>Obsidian template<CR>", desc = "Template" },
       { prefix .. "l", "<cmd>ObsidianLink<CR>", mode = "v", desc = "Link" },
       { prefix .. "L", "<cmd>ObsidianLinks<CR>", desc = "Links" },
       { prefix .. "N", "<cmd>ObsidianLinkNew<CR>", mode = "v", desc = "New Link" },
@@ -57,7 +64,7 @@ return {
       },
     },
     daily_notes = {
-      folder = vim.fn.expand("~") .. "/vault/Daily Notes",
+      folder = "Daily Notes",
       date_format = "%d %b %Y",
       template = vim.fn.expand("~/vault/templates/daily-note.md"),
     },
@@ -84,7 +91,7 @@ return {
     preferred_link_style = "markdown",
     disable_frontmatter = false,
     templates = {
-      folder = vim.fn.expand("~/vault/templates/"),
+      folder = "templates",
       date_format = "%d %b %Y",
     },
     follow_url_func = function(url)
