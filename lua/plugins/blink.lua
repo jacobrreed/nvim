@@ -1,8 +1,5 @@
 return {
   "saghen/blink.cmp",
-  dependencies = {
-    "Kaiser-Yang/blink-cmp-avante",
-  },
   opts = {
     enabled = function()
       return not vim.tbl_contains({ "oil", "markdown" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"

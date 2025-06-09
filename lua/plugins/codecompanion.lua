@@ -1,9 +1,13 @@
 return {
   "olimorris/codecompanion.nvim",
+  dependencies = {
+    { "nvim-lua/plenary.nvim", branch = "master" },
+    "nvim-treesitter/nvim-treesitter",
+  },
   opts = {
-    chat = { adapter = "gemini" },
-    inline = { adapter = "gemini" },
-    cmd = { adapter = "gemini" },
+    chat = { adapter = "copilot" },
+    inline = { adapter = "copilot" },
+    cmd = { adapter = "copilot" },
     adapters = {
       copilot = function()
         return require("codecompanion.adapters").extend("copilot", {
