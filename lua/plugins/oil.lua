@@ -31,12 +31,12 @@ return {
     view_options = {
       show_hidden = true,
       is_always_hidden = function(name, _)
-        local ignored = { ".git", ".hg", ".svn", ".DS_Store", "node_modules" }
-        if vim.tbl_contains(ignored, name) then
-          return true
-        else
-          return false
-        end
+        -- local ignored = { ".git", ".hg", ".svn", ".DS_Store", "node_modules" }
+        -- if vim.tbl_contains(ignored, name) then
+        --   return true
+        -- else
+        --   return false
+        -- end
       end,
       natural_order = "fast",
     },
