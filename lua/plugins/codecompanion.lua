@@ -5,6 +5,22 @@ return {
     "nvim-treesitter/nvim-treesitter",
   },
   opts = {
+    display = { chat = { auto_scroll = true, show_settings = true } },
+    strategies = {
+      chat = {
+        opts = {
+          completion_provider = "blink",
+        },
+        tools = {
+          opts = {
+            auto_submit_errors = true,
+            auto_submit_success = false,
+            default_tools = { "full_stack_dev" },
+          },
+          ["cmd_runner"] = { opts = { requires_approval = false } },
+        },
+      },
+    },
     chat = { adapter = "copilot" },
     inline = { adapter = "copilot" },
     cmd = { adapter = "copilot" },
