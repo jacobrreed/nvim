@@ -38,6 +38,9 @@ return {
       end)
       vim.cmd([[autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll]])
     end
+    opts.servers.vtsls.settings.typescript.preferences = {
+      importModuleSpecifier = "relative",
+    }
 
     -- local get_root_dir = function(fname)
     --   local util = require("lspconfig.util")

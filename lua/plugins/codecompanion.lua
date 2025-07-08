@@ -8,9 +8,6 @@ return {
     display = { chat = { auto_scroll = true, show_settings = true } },
     strategies = {
       chat = {
-        opts = {
-          completion_provider = "blink",
-        },
         tools = {
           opts = {
             auto_submit_errors = true,
