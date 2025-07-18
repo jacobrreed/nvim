@@ -1,0 +1,4 @@
+ - Toggle wrap
+ - Toggle formatting
+ - TODO search doesnt work
+ - Setup blink
