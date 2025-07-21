@@ -5,14 +5,14 @@ return {
     { "nvim-treesitter/nvim-treesitter" },
   },
   opts = {
-    display = { chat = { auto_scroll = true, show_settings = true } },
+    display = { chat = { auto_scroll = true, show_settings = false } },
     strategies = {
       chat = {
         tools = {
           opts = {
             auto_submit_errors = true,
             auto_submit_success = false,
-            default_tools = { "full_stack_dev" },
+            -- default_tools = { "full_stack_dev" },
           },
           ["cmd_runner"] = { opts = { requires_approval = false } },
         },
@@ -22,11 +22,15 @@ return {
     inline = { adapter = "copilot" },
     cmd = { adapter = "copilot" },
     adapters = {
+      opts = {
+        show_model_choices = true,
+      },
       copilot = function()
         return require("codecompanion.adapters").extend("copilot", {
           schema = {
             model = {
-              default = "claude-3.7-sonnet",
+              -- default = "claude-3.7-sonnet",
+              default = "gpt-4.1",
             },
           },
         })

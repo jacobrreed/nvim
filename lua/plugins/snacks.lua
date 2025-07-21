@@ -14,6 +14,15 @@ return {
     rename = { enabled = true },
     git = { enabled = false },
     notifier = { enabled = true },
+    statuscolumn = {
+      enable = true,
+      left = { "sign" },
+      right = { "fold", "git", "mark" },
+      folds = {
+        open = false,
+        git_hl = true,
+      },
+    },
     indent = {
       enabled = true,
       hl = {

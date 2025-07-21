@@ -3,7 +3,26 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     dependencies = {
-      "RRethy/nvim-treesitter-endwise",
+      "RRethy/nvim-treesitter-endwise", -- Auto adds `end` to things like lua functions
+      "JoosepAlviste/nvim-ts-context-commentstring", -- Allows commenting in things like HTML inside Vue etc
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        opts = {
+          enable = true,
+          multiwindow = true,
+          max_lines = 0,
+          separator = "▔",
+        },
+        keys = {
+          {
+            "[c",
+            function()
+              require("treesitter-context").go_to_context(vim.v.count1)
+            end,
+            { desc = "Go to Treesitter context" },
+          },
+        },
+      },
     },
     config = function()
       require("nvim-treesitter.configs").setup({

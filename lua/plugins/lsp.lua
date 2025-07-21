@@ -40,7 +40,6 @@ return {
             vim.lsp.buf.code_action,
             vim.tbl_extend("force", opts, { desc = "Code action" })
           )
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, vim.tbl_extend("force", opts, { desc = "References" }))
           vim.keymap.set("n", "<space>cf", function()
             vim.lsp.buf.format({ async = true })
           end, vim.tbl_extend("force", opts, { desc = "Format buffer" }))
