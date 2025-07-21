@@ -8,10 +8,14 @@ return {
     keywords = {
       BUG = { icon = "", color = "error" },
       FIXME = { icon = "", color = "error" },
+      fixme = { icon = "", color = "error" },
       HACK = { icon = "", color = "info" },
       NOTE = { icon = "❦", color = "info" },
+      note = { icon = "❦", color = "info" },
       TODO = { icon = "★", color = "actionItem" },
+      todo = { icon = "★", color = "actionItem" },
       WARN = { icon = "󰀦", color = "warning" },
+      warn = { icon = "󰀦", color = "warning" },
       WARNING = { icon = "󰀦", color = "warning" },
     },
     colors = {
