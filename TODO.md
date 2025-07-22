@@ -1,4 +1,2 @@
- - Toggle wrap
- - Toggle formatting
- - TODO search doesnt work
- - Setup blink
+# List of TODOs for nvim config tweaking
+ - Change styling of code folds

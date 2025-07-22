@@ -4,24 +4,56 @@ return {
   config = function()
     local conform = require("conform")
 
+    vim.g.disable_autoformat = false
+    vim.b.format = false
+
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettier_d" },
-        typescript = { "prettier_d" },
-        javascriptreact = { "prettier_d" },
-        typescriptreact = { "prettier_d" },
-        css = { "prettier_d" },
-        html = { "prettier_d" },
-        json = { "prettier_d" },
-        yaml = { "prettier_d" },
+        javascript = { "prettierd" },
+        typescript = { "prettierd" },
+        javascriptreact = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        css = { "prettierd" },
+        html = { "prettierd" },
+        json = { "prettierd" },
+        yaml = { "prettierd" },
         lua = { "stylua" },
         python = { "isort", "black" },
       },
-      format_on_save = {
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 500,
+      notify_on_error = false,
+      formatters = {
+        prettierd = {
+          require_cwd = true,
+        },
       },
+      format_on_save = function(bufnr)
+        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+          return
+        end
+        return { timeout_ms = 500, lsp_format = "fallback", async = false }
+      end,
     })
+
+    vim.keymap.set("n", "<leader>cf", function()
+      if vim.g.disable_autoformat then
+        vim.g.disable_autoformat = false
+        vim.notify("Autoformat enabled", vim.log.levels.INFO, { title = "Conform" })
+      else
+        vim.g.disable_autoformat = true
+        vim.notify("Autoformat disabled", vim.log.levels.INFO, { title = "Conform" })
+      end
+    end, { desc = "Toggle format" })
+
+    vim.keymap.set("n", "<leader>cF", function()
+      local bufnr = vim.api.nvim_get_current_buf()
+      if vim.b[bufnr].disable_autoformat then
+        vim.b[bufnr].disable_autoformat = false
+        vim.notify("Autoformat enabled (buffer)", vim.log.levels.INFO, { title = "Conform" })
+      else
+        vim.b[bufnr].disable_autoformat = true
+
+        vim.notify("Autoformat disabled (buffer)", vim.log.levels.INFO, { title = "Conform" })
+      end
+    end, { desc = "Toggle format (buffer)" })
   end,
 }

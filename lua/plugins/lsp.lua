@@ -8,6 +8,27 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      --  ____                              ___                      _     _
+      -- / ___|  ___ _ ____   _____ _ __   / _ \__   _____ _ __ _ __(_) __| | ___  ___
+      -- \___ \ / _ \ '__\ \ / / _ \ '__| | | | \ \ / / _ \ '__| '__| |/ _` |/ _ \/ __|
+      --  ___) |  __/ |   \ V /  __/ |    | |_| |\ V /  __/ |  | |  | | (_| |  __/\__ \
+      -- |____/ \___|_|    \_/ \___|_|     \___/  \_/ \___|_|  |_|  |_|\__,_|\___||___/
+      --
+      vim.lsp.config("vtsls", {
+        settings = {
+          typescript = {
+            preferences = {
+              importModuleSpecifier = "relative",
+            },
+          },
+        },
+      })
+      --  _     ____  ____    _  __
+      -- | |   / ___||  _ \  | |/ /___ _   _ _ __ ___   __ _ _ __  ___
+      -- | |   \___ \| |_) | | ' // _ \ | | | '_ ` _ \ / _` | '_ \/ __|
+      -- | |___ ___) |  __/  | . \  __/ |_| | | | | | | (_| | |_) \__ \
+      -- |_____|____/|_|     |_|\_\___|\__, |_| |_| |_|\__,_| .__/|___/
+      --                               |___/                |_|
       vim.keymap.set("n", "<space>cd", vim.diagnostic.open_float)
       vim.keymap.set("n", "[e", function()
         vim.diagnostic.jump({ count = -1, float = true, severity = vim.diagnostic.severity.ERROR })
@@ -34,17 +55,45 @@ return {
             vim.lsp.buf.implementation,
             vim.tbl_extend("force", opts, { desc = "Implementation" })
           )
+
           vim.keymap.set(
             { "n", "v" },
             "<space>ca",
             vim.lsp.buf.code_action,
             vim.tbl_extend("force", opts, { desc = "Code action" })
           )
-          vim.keymap.set("n", "<space>cf", function()
-            vim.lsp.buf.format({ async = true })
-          end, vim.tbl_extend("force", opts, { desc = "Format buffer" }))
+          vim.keymap.set({ "n", "v" }, "<space>cA", function()
+            vim.lsp.buf.code_action({
+              apply = true,
+              context = {
+                only = { "source" },
+                diagnostics = {},
+              },
+            })
+          end, vim.tbl_extend("force", opts, { desc = "Code action (buffer)" }))
         end,
       })
+
+      --     _         _                           _
+      --    / \  _   _| |_ ___   ___ _ __ ___   __| |___
+      --   / _ \| | | | __/ _ \ / __| '_ ` _ \ / _` / __|
+      --  / ___ \ |_| | || (_) | (__| | | | | | (_| \__ \
+      -- /_/   \_\__,_|\__\___/ \___|_| |_| |_|\__,_|___/
+      --
+      -- vim.api.nvim_create_autocmd("BufWritePre", {
+      --   group = vim.api.nvim_create_augroup("organize_imports", { clear = true }),
+      --   pattern = { "*.ts", "*.tsx", "*.js", "*.jsx" },
+      --   callback = function()
+      --     vim.lsp.buf.code_action({
+      --       apply = true,
+      --       context = { only = { "source.addMissingImports" }, diagnostics = {} },
+      --     })
+      --     -- Doesn't work well with both, have to save twice in a row for both to work
+      --     -- vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnused.ts" }, diagnostics = {} } })
+      --   end,
+      -- })
+
+      -- End of config function
     end,
   },
   --  __  __
@@ -75,7 +124,6 @@ return {
           -- Linters
           "pylint",
           "eslint_d",
-          "luacheck",
           -- Formatters
           "stylua",
           "isort",
