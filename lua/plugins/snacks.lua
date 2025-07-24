@@ -1,6 +1,7 @@
 return {
   "folke/snacks.nvim",
   lazy = false,
+  priority = 1000,
   config = function(_, opts)
     local snacks = require("snacks")
     snacks.setup(opts)
@@ -14,6 +15,9 @@ return {
     rename = { enabled = true },
     git = { enabled = false },
     notifier = { enabled = true },
+    image = { enabled = true },
+    quickfile = { enabled = true },
+    scroll = { enabled = true },
     statuscolumn = {
       enable = true,
       left = { "sign" },

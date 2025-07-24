@@ -44,6 +44,13 @@ return {
           end,
         },
         ensure_installed = {
+          "css",
+          "latex",
+          "norg",
+          "scss",
+          "svelte",
+          "typst",
+          "vue",
           "bash",
           "c",
           "diff",

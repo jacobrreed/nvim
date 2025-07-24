@@ -71,6 +71,8 @@ return {
               },
             })
           end, vim.tbl_extend("force", opts, { desc = "Code action (buffer)" }))
+          vim.keymap.set({ "n" }, "<leader>L", "<cmd>LspInfo<cr>", vim.tbl_extend("force", opts, { desc = "LSP Info" }))
+          -- End of lsp attach autocmd
         end,
       })
 
@@ -138,6 +140,7 @@ return {
     opts = {
       automatic_enable = true,
       ensure_installed = {
+        "jsonls",
         "gopls",
         "lua_ls",
         "basedpyright",
@@ -159,7 +162,25 @@ return {
   --                |___/
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {
+      modes = {
+        mydiags = {
+          mode = "diagnostics", -- inherit from diagnostics mode
+          filter = {
+            any = {
+              buf = 0, -- current buffer
+              {
+                severity = vim.diagnostic.severity.ERROR, -- errors only
+                -- limit to files in the current project
+                function(item)
+                  return item.filename:find((vim.loop or vim.uv).cwd(), 1, true)
+                end,
+              },
+            },
+          },
+        },
+      },
+    }, -- for default options, refer to the configuration section for custom setup.
     cmd = "Trouble",
     keys = {
       {

@@ -1,8 +1,8 @@
 return {
   "akinsho/bufferline.nvim",
-  vscode = false,
+  version = "*",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-  event = { "BufEnter", "BufLeave" },
+  event = { "BufReadPost", "BufAdd", "BufNewFile" },
   opts = {
     options = {
       themable = true,
@@ -30,6 +30,22 @@ return {
       diagnostics = "nvim_lsp",
       always_show_bufferline = true,
       diagnostics_update_on_event = true, -- use nvim's diagnostic handler
+      groups = {
+        options = {
+          toggle_hidden_on_enter = true,
+        },
+        -- items = {
+        --   {
+        --     name = "Tests", -- Mandatory
+        --     highlight = { underline = true }, -- Optional
+        --     priority = 4, -- determines where it will appear relative to other groups (Optional)
+        --     icon = " ", -- Optional
+        --     matcher = function(buf) -- Mandatory
+        --       return buf.ge:match("%.(test|spec)%.tsx?$")
+        --     end,
+        --   },
+        -- },
+      },
     },
   },
   keys = function()
