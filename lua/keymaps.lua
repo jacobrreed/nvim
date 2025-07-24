@@ -62,22 +62,6 @@ map("n", "<leader>wd", "<cmd>q<cr>", { desc = "Delete window", remap = true })
 map("n", "<leader>w|", "<cmd>vsplit<cr>", { desc = "Split window right", remap = true })
 map("n", "<leader>w-", "<cmd>split<cr>", { desc = "Split window below", remap = true })
 
-map("n", "Dm", "<cmd>silent! delm! | delm A-Z0-9 | wshada!<cr>", { desc = "Delete all" })
--- Delete marks on current line
-local delMarks = function()
-  local marks = ""
-  for i = string.byte("a"), string.byte("z") do
-    local mark = string.char(i)
-    if vim.api.nvim_buf_get_mark(0, mark)[1] == vim.api.nvim_win_get_cursor(0)[1] then
-      marks = marks .. mark
-    end
-  end
-  if marks ~= "" then
-    vim.cmd("delmarks " .. marks)
-  end
-end
-map("n", "dm", delMarks, { desc = "delete current mark" })
-
 -- -- Rebind jj  and kk to escape
 -- Superceded by betterescape
 map({ "i" }, "jj", "<Esc>")

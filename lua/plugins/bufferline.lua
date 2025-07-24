@@ -50,7 +50,7 @@ return {
   },
   keys = function()
     local wk = require("which-key")
-    wk.add({ { "<leader>b", group = "Buffer" } })
+    wk.add({ { "<leader>b", group = "Buffer", icon = "" } })
     return {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "Toggle pin" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "Delete non-pinned buffers" },

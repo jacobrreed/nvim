@@ -9,6 +9,7 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     ft = { "codecompanion", "Avante", "markdown", "copilot-chat", "rmd", "norg", "org" },
     opts = {
+      file_types = { "markdown", "Avante" },
       anti_conceal = {
         enabled = true,
         ignore = {

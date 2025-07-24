@@ -112,10 +112,11 @@ opt.fillchars = {
   diff = "╱",
   eob = " ",
 }
-opt.foldlevel = 99
-opt.foldmethod = "expr"
-opt.foldexpr = "v:lua.require'util'.foldtext()"
-opt.foldtext = ""
+-- Overridden by nvim-ufo
+-- opt.foldlevel = 99
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "v:lua.require'util'.foldtext()"
+-- opt.foldtext = ""
 
 vim.opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
 

@@ -1,3 +1,0 @@
-return {
-  "mohseenrm/marko.nvim",
-}
