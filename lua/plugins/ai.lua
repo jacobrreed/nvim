@@ -6,36 +6,35 @@ return {
       { "nvim-treesitter/nvim-treesitter" },
     },
     opts = {
-      display = { chat = { auto_scroll = true, show_settings = false } },
       strategies = {
-        chat = {
-          tools = {
-            opts = {
-              auto_submit_errors = true,
-              auto_submit_success = false,
-              -- default_tools = { "full_stack_dev" },
-            },
-            ["cmd_runner"] = { opts = { requires_approval = false } },
+        chat = { adapter = "copilot" },
+        inline = { adapter = "copilot" },
+        roles = {
+          user = " ",
+          llm = function(_)
+            return " "
+          end,
+        },
+        tools = {
+          opts = {
+            auto_submit_errors = true,
+            auto_submit_success = false,
+            -- default_tools = { "full_stack_dev" },
           },
+          ["cmd_runner"] = { opts = { requires_approval = false } },
         },
       },
-      chat = { adapter = "copilot" },
-      inline = { adapter = "copilot" },
-      cmd = { adapter = "copilot" },
       adapters = {
-        opts = {
-          show_model_choices = true,
-        },
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              model = {
-                -- default = "claude-3.7-sonnet",
-                default = "gpt-4.1",
-              },
+        tavily = function()
+          return require("codecompanion.adapters").extend("tavily", {
+            env = {
+              api_key = vim.env.TAVILY_API_KEY,
             },
           })
         end,
+        opts = {
+          show_model_choices = true,
+        },
       },
     },
     keys = function()
@@ -56,5 +55,12 @@ return {
         },
       }
     end,
+  },
+  {
+    "ellisonleao/dotenv.nvim",
+    opts = {
+      enable_on_load = true,
+      verbose = false,
+    },
   },
 }
