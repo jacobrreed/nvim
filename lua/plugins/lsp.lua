@@ -149,6 +149,7 @@ return {
     opts = {
       automatic_enable = true,
       ensure_installed = {
+        "bashls",
         "jsonls",
         "gopls",
         "lua_ls",

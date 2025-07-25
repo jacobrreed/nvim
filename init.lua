@@ -35,7 +35,7 @@ rtp:prepend(lazypath)
 require("lazy").setup({
   { import = "plugins" },
 }, {
-  checker = { enabled = true, concurrency = nil },
+  checker = { enabled = true, concurrency = 1 },
   change_detection = { enabled = true, notify = false },
   ui = {
     size = { width = 0.8, height = 0.8 },
