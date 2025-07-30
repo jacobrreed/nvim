@@ -135,6 +135,9 @@ return {
           -- Linters
           "pylint",
           "eslint_d",
+          "checkmake",
+          "terraform",
+          "yamllint",
           -- Formatters
           "stylua",
           "isort",
@@ -159,6 +162,9 @@ return {
         "docker_compose_language_service",
         "dockerls",
         "vtsls",
+        "terraformls",
+        "clangd",
+        "emmet_ls",
       },
     },
     dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },

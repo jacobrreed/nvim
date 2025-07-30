@@ -11,6 +11,13 @@ return {
     sources = {
       default = { "copilot", "lsp", "lazydev", "path", "snippets", "buffer" },
       providers = {
+        path = {
+          opts = {
+            get_cwd = function(_)
+              return vim.fn.getcwd()
+            end,
+          },
+        },
         copilot = {
           name = "copilot",
           module = "blink-copilot",
@@ -29,6 +36,7 @@ return {
     },
     completion = {
       menu = {
+        min_width = 60,
         border = "rounded",
         draw = {
           padding = { 0, 1 }, -- padding only on right side

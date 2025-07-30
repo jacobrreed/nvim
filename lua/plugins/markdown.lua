@@ -42,9 +42,6 @@ return {
       local vault_path = vim.fn.expand("~/vault")
       return vim.startswith(cwd, vault_path)
     end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
     config = function(_, opts)
       local wk = require("which-key")
       wk.add({
