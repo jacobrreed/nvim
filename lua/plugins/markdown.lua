@@ -1,9 +1,15 @@
 return {
   {
     "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = "cd app && yarn install",
     init = function()
-      vim.g.mkdp_preview_options = { disable_sync_scroll = 1 }
+      vim.g.mkdp_filetypes = { "markdown" }
     end,
+    keys = {
+      { "<leader>cp", "<cmd>MarkdownPreview<cr>", desc = "Markdown preview" },
+    },
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
