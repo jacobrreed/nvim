@@ -6,6 +6,16 @@ return {
   -- |_____|____/|_|
   --
   {
+    "RRethy/vim-illuminate",
+    -- Auto highlights for LSP -> treesitter -> regex same words/symbols
+    opts = {
+      providers = { "lsp", "treesitter", "regex" },
+    },
+    config = function(_, opts)
+      require("illuminate").configure(opts)
+    end,
+  },
+  {
     "neovim/nvim-lspconfig",
     config = function()
       --  ____                              ___                      _     _
