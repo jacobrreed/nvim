@@ -42,6 +42,7 @@ return {
     version = "*",
     lazy = true,
     event = "VimEnter",
+    --
     cond = function()
       -- Check if the current working directory is within the vault
       local cwd = vim.fn.getcwd()
@@ -56,21 +57,21 @@ return {
       local prefix = "<leader>o"
 
       local mappings = {
-        { prefix .. "o", "<cmd>ObsidianOpen<CR>", desc = "Open on App" },
-        { "<leader>sO", "<cmd>ObsidianSearch<CR>", desc = "Obsidian Grep" },
-        { prefix .. "n", "<cmd>ObsidianNew<CR>", desc = "New Note" },
-        { prefix .. "<space>", "<cmd>ObsidianQuickSwitch<CR>", desc = "Find Files" },
-        { prefix .. "b", "<cmd>ObsidianBacklinks<CR>", desc = "Backlinks" },
-        { prefix .. "t", "<cmd>ObsidianTags<CR>", desc = "Tags" },
+        { prefix .. "o", "<cmd>Obsidian open<CR>", desc = "Open on App" },
+        { "<leader>sO", "<cmd>Obsidian search<CR>", desc = "Obsidian Grep" },
+        { prefix .. "n", "<cmd>Obsidian new<CR>", desc = "New Note" },
+        { prefix .. "<space>", "<cmd>Obsidian quickswitch<CR>", desc = "Find Files" },
+        { prefix .. "b", "<cmd>Obsidian backlinks<CR>", desc = "Backlinks" },
+        { prefix .. "t", "<cmd>Obsidian tags<CR>", desc = "Tags" },
         { prefix .. "T", "<cmd>Obsidian template<CR>", desc = "Template" },
-        { prefix .. "l", "<cmd>ObsidianLink<CR>", mode = "v", desc = "Link" },
-        { prefix .. "L", "<cmd>ObsidianLinks<CR>", desc = "Links" },
-        { prefix .. "N", "<cmd>ObsidianLinkNew<CR>", mode = "v", desc = "New Link" },
-        { prefix .. "e", "<cmd>ObsidianExtractNote<CR>", mode = "v", desc = "Extract Note" },
-        { prefix .. "w", "<cmd>ObsidianWorkspace<CR>", desc = "Workspace" },
-        { prefix .. "r", "<cmd>ObsidianRename<CR>", desc = "Rename" },
-        { prefix .. "i", "<cmd>ObsidianPasteImg<CR>", desc = "Paste Image" },
-        { prefix .. "d", "<cmd>ObsidianDailies<CR>", desc = "Daily Notes" },
+        { prefix .. "l", "<cmd>Obsidian link<CR>", mode = "v", desc = "Link" },
+        { prefix .. "L", "<cmd>Obsidian links<CR>", desc = "Links" },
+        { prefix .. "N", "<cmd>Obsidian linknew<CR>", mode = "v", desc = "New Link" },
+        { prefix .. "e", "<cmd>Obsidian extractnote<CR>", mode = "v", desc = "Extract Note" },
+        { prefix .. "w", "<cmd>Obsidian workspace<CR>", desc = "Workspace" },
+        { prefix .. "r", "<cmd>Obsidian rename<CR>", desc = "Rename" },
+        { prefix .. "i", "<cmd>Obsidian pasteimg<CR>", desc = "Paste Image" },
+        { prefix .. "d", "<cmd>Obsidian dailies<CR>", desc = "Daily Notes" },
       }
 
       -- Set up the plugin
@@ -83,15 +84,12 @@ return {
       end
     end,
     opts = {
+      legacy_commands = false,
+      checkbox = {
+        order = { " ", "x", "!", ">", "~" },
+      },
       ui = {
         enable = false,
-        checkboxes = {
-          [" "] = { char = "󰄱", hl_group = "ObsidianTodo" },
-          ["x"] = { char = "", hl_group = "ObsidianDone" },
-          ["!"] = { char = "", hl_group = "ObsidianImportant" },
-          [">"] = { char = "", hl_group = "ObsidianRightArrow" },
-          ["~"] = { char = "󰰱", hl_group = "ObsidianTilde" },
-        },
       },
       workspaces = {
         {
@@ -107,22 +105,6 @@ return {
       completion = {
         nvim_cmp = false,
         blink = true,
-      },
-      mappings = {
-        -- Overrides the 'gf' mapping to work on markdown/wiki links within your vault.
-        ["gd"] = {
-          action = function()
-            return require("obsidian").util.gf_passthrough()
-          end,
-          opts = { noremap = false, expr = true, buffer = true },
-        },
-        -- Smart action depending on context, either follow link or toggle checkbox.
-        ["<cr>"] = {
-          action = function()
-            return require("obsidian").util.smart_action()
-          end,
-          opts = { buffer = true, expr = true },
-        },
       },
       preferred_link_style = "markdown",
       disable_frontmatter = false,
