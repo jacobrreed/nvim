@@ -189,7 +189,7 @@ return {
         desc = "Smart Find Files",
       },
       {
-        "<leader>b",
+        "<leader>'",
         function()
           Snacks.picker.buffers()
         end,
