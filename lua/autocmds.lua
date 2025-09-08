@@ -63,16 +63,18 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- wrap in text filetypes
+vim.api.nvim_create_augroup("wrap", { clear = true })
+vim.api.nvim_create_augroup("spell", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("wrap_spell"),
+  group = "wrap",
   pattern = { "gitcommit", "markdown", "snacks_notif_history", "trouble" },
   callback = function()
     vim.opt_local.wrap = true
+    vim.opt_local.linebreak = true
   end,
-})
--- check for spelling in text filetypes
+}) -- check for spelling in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
-  group = augroup("wrap_spell"),
+  group = augroup("spell"),
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.spell = true
