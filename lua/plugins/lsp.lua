@@ -90,7 +90,18 @@ return {
               },
             })
           end, vim.tbl_extend("force", opts, { desc = "Code action (buffer)" }))
-          vim.keymap.set({ "n" }, "<leader>L", "<cmd>LspInfo<cr>", vim.tbl_extend("force", opts, { desc = "LSP Info" }))
+          vim.keymap.set(
+            { "n" },
+            "<leader>Li",
+            "<cmd>LspInfo<cr>",
+            vim.tbl_extend("force", opts, { desc = "LSP Info" })
+          )
+          vim.keymap.set(
+            { "n" },
+            "<leader>Lr",
+            "<cmd>LspRestart<cr>",
+            vim.tbl_extend("force", opts, { desc = "LSP Restart" })
+          )
           -- End of lsp attach autocmd
         end,
       })
@@ -156,6 +167,9 @@ return {
         },
       })
     end,
+    keys = {
+      { "<leader>Lm", "<cmd>Mason<cr>", { desc = "Mason" } },
+    },
   },
   {
     "mason-org/mason-lspconfig.nvim",
