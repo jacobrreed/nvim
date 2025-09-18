@@ -97,15 +97,17 @@ return {
         },
       },
       adapters = {
-        tavily = function()
-          return require("codecompanion.adapters").extend("tavily", {
-            env = {
-              api_key = vim.env.TAVILY_API_KEY,
-            },
-          })
-        end,
-        opts = {
-          show_model_choices = true,
+        http = {
+          tavily = function()
+            return require("codecompanion.adapters").extend("tavily", {
+              env = {
+                api_key = vim.env.TAVILY_API_KEY,
+              },
+            })
+          end,
+          opts = {
+            show_model_choices = true,
+          },
         },
       },
     },
