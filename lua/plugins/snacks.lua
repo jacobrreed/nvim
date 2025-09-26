@@ -14,7 +14,7 @@ return {
     scope = { enabled = true },
     rename = { enabled = true },
     git = { enabled = false },
-    notifier = { enabled = true },
+    notifier = { enabled = true, timeout = 3000 },
     image = { enabled = true },
     quickfile = { enabled = true },
     scroll = { enabled = true },

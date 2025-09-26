@@ -4,6 +4,10 @@ return {
     vscode = false,
   },
   {
+    "stevearc/quicker.nvim",
+    event = "FileType qf",
+  },
+  {
     "kevinhwang91/nvim-bqf",
     vscode = false,
     setup = function()

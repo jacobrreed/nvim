@@ -133,4 +133,41 @@ return {
       },
     },
   },
+  {
+    "sotte/presenting.nvim",
+    opts = {
+      options = {
+        width = 100,
+      },
+      separator = {
+        markdown = "^---",
+      },
+      keep_separator = false,
+      parse_frontmatter = true,
+      keymaps = {
+        ["n"] = function()
+          Presenting.next()
+        end,
+        ["p"] = function()
+          Presenting.prev()
+        end,
+        ["q"] = function()
+          Presenting.quit()
+        end,
+        ["f"] = function()
+          Presenting.first()
+        end,
+        ["l"] = function()
+          Presenting.last()
+        end,
+        ["<CR>"] = function()
+          Presenting.next()
+        end,
+        ["<BS>"] = function()
+          Presenting.prev()
+        end,
+      },
+    },
+    cmd = { "Presenting" },
+  },
 }

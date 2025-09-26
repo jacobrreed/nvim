@@ -1,6 +1,5 @@
 return {
   "folke/noice.nvim",
-  event = "VeryLazy",
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
@@ -20,5 +19,4 @@ return {
       long_message_to_split = true,
     },
   },
-  keys = {},
 }
