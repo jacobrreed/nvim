@@ -6,7 +6,7 @@ return {
 
     lint = {
       linters_by_ft = {
-        markdown = {},
+        markdown = { "markdownlint-cli2" },
         typescript = { "eslint" },
         lua = { "selene" },
       },

@@ -15,7 +15,13 @@ return {
     rename = { enabled = true },
     git = { enabled = false },
     notifier = { enabled = true, timeout = 3000 },
-    image = { enabled = true },
+    image = {
+      resolve = function(path, src)
+        if require("obsidian.api").path_is_note(path) then
+          return require("obsidian.api").resolve_image_path(src)
+        end
+      end,
+    },
     quickfile = { enabled = true },
     scroll = { enabled = true },
     statuscolumn = {

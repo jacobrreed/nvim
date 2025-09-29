@@ -164,6 +164,8 @@ return {
           "isort",
           "black",
           "prettierd",
+          "markdownlint-cli2",
+          "markdown-toc",
         },
       })
     end,

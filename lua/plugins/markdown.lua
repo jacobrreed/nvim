@@ -70,7 +70,7 @@ return {
         { prefix .. "e", "<cmd>Obsidian extractnote<CR>", mode = "v", desc = "Extract Note" },
         { prefix .. "w", "<cmd>Obsidian workspace<CR>", desc = "Workspace" },
         { prefix .. "r", "<cmd>Obsidian rename<CR>", desc = "Rename" },
-        { prefix .. "i", "<cmd>Obsidian pasteimg<CR>", desc = "Paste Image" },
+        { prefix .. "i", "<cmd>Obsidian paste_img<CR>", desc = "Paste Image" },
         { prefix .. "d", "<cmd>Obsidian dailies<CR>", desc = "Daily Notes" },
       }
 
@@ -84,6 +84,14 @@ return {
       end
     end,
     opts = {
+      attachments = {
+        image_text_func = function(path)
+          local name = vim.fs.basename(tostring(path))
+          local encoded_name = require("obsidian.util").urlencode(name)
+          return string.format("![%s](%s)", name, encoded_name)
+        end,
+        img_folder = "./",
+      },
       legacy_commands = false,
       checkbox = {
         order = { " ", "x", "!", ">", "~" },
@@ -169,5 +177,13 @@ return {
       },
     },
     cmd = { "Presenting" },
+  },
+  {
+    "hedyhli/markdown-toc.nvim",
+    ft = "markdown",
+    opts = {
+      heading = { before_toc = false },
+      auto_update = true,
+    },
   },
 }
