@@ -90,5 +90,7 @@ return {
       ft = "oil",
     },
   },
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = {
+    "nvim-tree/nvim-web-devicons",
+  },
 }

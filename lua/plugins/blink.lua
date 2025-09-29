@@ -3,14 +3,22 @@ return {
   version = "1.*",
   dependencies = {
     "fang2hou/blink-copilot",
+    {
+      "mikavilpas/blink-ripgrep.nvim",
+      version = "*",
+    },
   },
   opts = {
     enabled = function()
       return not vim.tbl_contains({ "oil", "markdown" }, vim.bo.filetype) and vim.bo.buftype ~= "prompt"
     end,
     sources = {
-      default = { "copilot", "lsp", "lazydev", "path", "snippets", "buffer" },
+      default = { "copilot", "lsp", "ripgrep", "path", "lazydev", "snippets", "buffer" },
       providers = {
+        ripgrep = {
+          module = "blink-ripgrep",
+          name = "ripgrep",
+        },
         path = {
           opts = {
             get_cwd = function(_)

@@ -12,6 +12,11 @@ return {
           group = "+window",
           icon = { icon = " " },
         },
+        {
+          "<leader>L",
+          group = "+LSP",
+          icon = { icon = " " },
+        },
       },
     },
   },
