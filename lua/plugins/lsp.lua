@@ -191,6 +191,7 @@ return {
         "terraformls",
         "clangd",
         "emmet_ls",
+        "copilot",
       },
     },
     dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
