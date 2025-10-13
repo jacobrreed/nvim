@@ -43,7 +43,7 @@ return {
     lazy = true,
     event = "VimEnter",
     --
-    cond = function()
+    enabled = function()
       -- Check if the current working directory is within the vault
       local cwd = vim.fn.getcwd()
       local vault_path = vim.fn.expand("~/vault")

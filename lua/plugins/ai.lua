@@ -3,10 +3,12 @@ return {
     "zbirenbaum/copilot.lua",
     -- dir = "~/dev/copilot.lua",
     event = "InsertEnter",
-    opts = {
-      filetypes = { markdown = false, help = false },
-      copilot_node_command = vim.fn.expand("$FNM_DIR") .. "/node-versions/v22.13.0/installation/bin/node",
-    },
+    config = function()
+      require("copilot").setup({
+        filetypes = { markdown = false, help = false },
+        copilot_node_command = vim.fn.expand("$FNM_DIR") .. "/node-versions/v22.13.0/installation/bin/node",
+      })
+    end,
   },
   {
     "AndreM222/copilot-lualine",

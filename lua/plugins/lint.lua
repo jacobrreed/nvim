@@ -2,23 +2,25 @@ return {
   "mfussenegger/nvim-lint",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local lint = require("lint")
-
-    lint = {
-      linters_by_ft = {
-        markdown = { "markdownlint-cli2" },
-        typescript = { "eslint" },
-        lua = { "selene" },
-      },
+    vim.env.ESLINT_D_PPID = vim.fn.getpid()
+    require("lint").linters_by_ft = {
+      markdown = { "markdownlint-cli2" },
+      typescript = { "eslint_d" },
+      typescriptreact = { "eslint_d" },
+      javascript = { "eslint_d" },
+      javascriptreact = { "eslint_d" },
+      ["javascript.jsx"] = { "eslint_d" },
+      ["typescript.sx"] = { "eslint_d" },
+      -- lua = { "selene" },
     }
 
-    -- local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-    --
-    -- vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
-    --   group = lint_augroup,
-    --   callback = function()
-    --     lint.tr
-    --   end,
-    -- })
+    local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+
+    vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
+      group = lint_augroup,
+      callback = function()
+        require("lint").try_lint()
+      end,
+    })
   end,
 }

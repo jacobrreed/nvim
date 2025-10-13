@@ -1,6 +1,6 @@
 return {
   "stevearc/conform.nvim",
-  event = { "BufReadPre", "BufNewFile" },
+  event = { "BufReadPre", "BufNewFile", "BufWritePre" },
   config = function()
     local conform = require("conform")
 
@@ -9,10 +9,12 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettierd" },
-        typescript = { "prettierd" },
-        javascriptreact = { "prettierd" },
-        typescriptreact = { "prettierd" },
+        javascript = { "eslint_d", "prettierd" },
+        typescript = { "eslint_d", "prettierd" },
+        javascriptreact = { "eslint_d", "prettierd" },
+        typescriptreact = { "eslint_d", "prettierd" },
+        ["javascript.jsx"] = { "eslint_d", "prettierd" },
+        ["typescript.tsx"] = { "eslint_d", "prettierd" },
         css = { "prettierd" },
         html = { "prettierd" },
         json = { "prettierd" },
