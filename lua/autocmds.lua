@@ -111,7 +111,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = { "*.ts", ".tsx" },
   callback = function()
     vim.lsp.buf.code_action({ apply = true, context = { only = { "source.addMissingImports.ts" }, diagnostics = {} } })
-    -- vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnused.ts" }, diagnostics = {} } })
+    vim.lsp.buf.code_action({ apply = true, context = { only = { "source.removeUnused.ts" }, diagnostics = {} } })
   end,
 })
 
@@ -213,3 +213,28 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 --     })
 --   end,
 -- })
+--
+local group = vim.api.nvim_create_augroup("RestoreCursor", { clear = true })
+vim.api.nvim_create_autocmd("BufReadPre", {
+  group = group,
+  callback = function(args)
+    vim.api.nvim_create_autocmd("FileType", {
+      buffer = args.buf,
+      once = true,
+      callback = function()
+        local ft = vim.bo[args.buf].filetype
+        local last_pos = vim.api.nvim_buf_get_mark(args.buf, '"')[1]
+        local last_line = vim.api.nvim_buf_line_count(args.buf)
+        if
+          last_pos >= 1
+          and last_pos <= last_line
+          and not ft:match("commit")
+          and not vim.tbl_contains({ "gitrebase", "nofile", "svn", "gitcommit" }, ft)
+        then
+          vim.api.nvim_win_set_cursor(0, { last_pos, 0 })
+        end
+      end,
+    })
+  end,
+})
+--
