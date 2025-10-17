@@ -61,6 +61,9 @@ return {
       ["<C-q>"] = "actions.send_to_qflist",
     },
     float = {
+      border="rounded",
+      max_width = 0.8,
+      min_width = 0.8,
       win_options = {
         winblend = 0,
       },
