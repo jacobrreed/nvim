@@ -103,6 +103,7 @@ return {
         },
         lualine_y = {
           "filetype",
+          { "location" },
         },
         lualine_z = {
           {

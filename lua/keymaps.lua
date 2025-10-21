@@ -50,9 +50,6 @@ map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w!<cr><esc>", { desc = "Save file" })
 -- Save all buffers and close
 map({ "i", "n" }, "<C-q>", "<cmd>silent! xa<cr>", { desc = "Save all and quit" })
 
--- Close current buffer
-map({ "i", "n" }, "<C-w>", ":lua require('snacks').bufdelete()<cr>", { desc = "Delete buffer", silent = true })
-
 -- better indenting
 map("v", "<", "<gv")
 map("v", ">", ">gv")

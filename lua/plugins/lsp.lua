@@ -154,6 +154,7 @@ return {
       tool.setup({
         ensure_installed = {
           -- Linters
+          "mmdc",
           "pylint",
           "eslint_d",
           "checkmake",
