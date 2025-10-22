@@ -184,7 +184,6 @@ return {
         "gopls",
         "lua_ls",
         "basedpyright",
-        "rust_analyzer",
         "yamlls",
         "docker_compose_language_service",
         "dockerls",
@@ -285,5 +284,10 @@ return {
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
       },
     },
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^6",
+    lazy = false,
   },
 }
