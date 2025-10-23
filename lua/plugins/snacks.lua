@@ -86,8 +86,8 @@ return {
       sections = {
         {
           section = "terminal",
-          cmd = "cat ~/.config/nvim/logo.txt",
-          height = 20,
+          cmd = "cat ~/.config/nvim/logo.txt; sleep .1",
+          height = 17,
           padding = 1,
           indent = 9,
         },
