@@ -4,7 +4,6 @@ return {
   config = function()
     vim.env.ESLINT_D_PPID = vim.fn.getpid()
     require("lint").linters_by_ft = {
-      markdown = { "markdownlint-cli2" },
       typescript = { "eslint_d" },
       typescriptreact = { "eslint_d" },
       javascript = { "eslint_d" },

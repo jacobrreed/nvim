@@ -36,6 +36,11 @@ return {
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
+          score_offset = 98,
+        },
+        lsp = {
+          name = "LSP",
+          module = "blink.cmp.sources.lsp",
           score_offset = 100,
         },
       },
