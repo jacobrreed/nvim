@@ -11,7 +11,7 @@ return {
       javascriptreact = { "eslint_d" },
       ["javascript.jsx"] = { "eslint_d" },
       ["typescript.sx"] = { "eslint_d" },
-      -- lua = { "selene" },
+      cmake = { "cmakelint" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

@@ -33,6 +33,72 @@ return {
           },
         },
       })
+      vim.lsp.config("clangd", {
+        keys = {
+          { "<leader>ch", "<cmd>LspClangdSwitchSourceHeader<cr>", desc = "Switch Source/Header (C/C++)" },
+        },
+        root_markers = {
+          "compile_commands.json",
+          "compile_flags.txt",
+          "configure.ac", -- AutoTools
+          "Makefile",
+          "configure.ac",
+          "configure.in",
+          "config.h.in",
+          "meson.build",
+          "meson_options.txt",
+          "build.ninja",
+          ".git",
+        },
+        capabilities = {
+          offsetEncoding = { "utf-16" },
+        },
+        cmd = {
+          "clangd",
+          "--background-index",
+          "--clang-tidy",
+          "--header-insertion=iwyu",
+          "--completion-style=detailed",
+          "--function-arg-placeholders",
+          "--fallback-style=llvm",
+        },
+        init_options = {
+          usePlaceholders = true,
+          completeUnimported = true,
+          clangdFileStatus = true,
+        },
+        setup = {
+          clangd = function(_, opts)
+            local clangd_ext_opts = {
+              inlay_hints = {
+                inline = false,
+              },
+              ast = {
+                --These require codicons (https://github.com/microsoft/vscode-codicons)
+                role_icons = {
+                  type = "",
+                  declaration = "",
+                  expression = "",
+                  specifier = "",
+                  statement = "",
+                  ["template argument"] = "",
+                },
+                kind_icons = {
+                  Compound = "",
+                  Recovery = "",
+                  TranslationUnit = "",
+                  PackExpansion = "",
+                  TemplateTypeParm = "",
+                  TemplateTemplateParm = "",
+                  TemplateParamObject = "",
+                },
+              },
+            }
+            require("clangd_extensions").setup(vim.tbl_deep_extend("force", clangd_ext_opts or {}, { server = opts }))
+            return false
+          end,
+        },
+      })
       --  _     ____  ____    _  __
       -- | |   / ___||  _ \  | |/ /___ _   _ _ __ ___   __ _ _ __  ___
       -- | |   \___ \| |_) | | ' // _ \ | | | '_ ` _ \ / _` | '_ \/ __|
@@ -160,6 +226,10 @@ return {
           "checkmake",
           "terraform",
           "yamllint",
+          "cmakelint",
+          "cmakelang",
+          -- DAP
+          "codelldb",
           -- Formatters
           "stylua",
           "isort",
@@ -187,6 +257,7 @@ return {
         "yamlls",
         "docker_compose_language_service",
         "dockerls",
+        "neocmake",
         "vtsls",
         "terraformls",
         "clangd",
@@ -289,5 +360,33 @@ return {
     "mrcjkb/rustaceanvim",
     version = "^6",
     lazy = false,
+  },
+  {
+    "p00f/clangd_extensions.nvim",
+    lazy = true,
+    opts = {},
+  },
+  {
+    "Civitasv/cmake-tools.nvim",
+    lazy = true,
+    init = function()
+      local loaded = false
+      local function check()
+        local cwd = vim.uv.cwd()
+        if vim.fn.filereadable(cwd .. "/CMakeLists.txt") == 1 then
+          require("lazy").load({ plugins = { "cmake-tools.nvim" } })
+          loaded = true
+        end
+      end
+      check()
+      vim.api.nvim_create_autocmd("DirChanged", {
+        callback = function()
+          if not loaded then
+            check()
+          end
+        end,
+      })
+    end,
+    opts = {},
   },
 }
